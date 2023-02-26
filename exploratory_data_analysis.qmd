@@ -6,24 +6,475 @@ date: "3 March 2023"
 date-format: long
 format:
   revealjs: 
-    slide-number: true
-    chalkboard: 
-      buttons: false
+    code-copy: true
+    center-title-slide: false
+    # include-in-header: heading-meta.html
+    code-link: true
+    code-overflow: wrap
+    code-line-numbers: false
+    highlight-style: a11y
+    height: 1080
+    width: 1920
+    slide-number: c/t
     preview-links: auto
 #    logo: images/quarto.png
 #    css: styles.css
     footer: <https://davidcarslaw.github.io/web/exploratory_data_analysis.html#/>
+execute: 
+  eval: true
+  echo: true
+  message: false
+  warning: false
+  freeze: auto
 ---
 
-## Hello, There
+# Topics for today
 
-This presentation will show you examples of what you can do with Quarto and [Reveal.js](https://revealjs.com), including:
+<hr>
 
--   Presenting code and LaTeX equations
--   Including computations in slide output
--   Image, video, and iframe backgrounds
--   Fancy transitions and animations
--   Printing to PDF
+-   Exploratory data analysis
 
-...and much more
----
+-   Introduction to reproducible research
+
+> <span style="color:purple"> **Much less emphasis on common statistical tests e.g. hypothesis testing ... more emphasis on approaches to working with and analysing experimental data**
+
+-   Will cover some useful concepts and principles over the next hour
+
+-   Encourage some discussion
+
+-   Session in a couple of weeks will be a chance to have a go yourself
+
+## Exploratory data analysis {background="#43464B"}
+
+## Exploratory data analysis
+
+<hr>
+
+*"Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise." --- John Tukey*
+
+<br>
+
+-   **Exploratory data analysis** (EDA) is an important approach that has developed over many years
+
+-   It is important to undertake when trying to understand almost any data
+
+-   The broad goal is understanding your data and its characteristics
+
+-   No set rules as such, but there are common types of analysis that are undertaken
+
+## Some aims of EDA
+
+-   Get a 'feel' for your data. At this stage it is useful to check whether the data look to be reasonable based on experience and a theoretical understanding
+
+-   EDA is useful to help generate questions about data.
+
+-   These questions can be addressed by visualising, transforming, and modelling data.
+
+-   Often, EDA will help to refine questions and/or generate new questions...
+
+-   To some extent, a move away from hypothesis testing to considering the data to *help develop hypotheses*
+
+## Tools for EDA
+
+<hr>
+
+Over the past 20 years [R](https://www.r-project.org/) has become the leading software for conducting statistical analysis --- or more generally data analysis.[^1]
+
+[^1]: Probably more accurate to say R and [python](https://www.python.org/). Both of these languages are highly capable and it's highly recommended to learn one, or both!
+
+In our examples class next week we will use R and an Integrated Development Environment (aka a nice 'front-end'!) called [RStudio](https://www.rstudio.com/). The examples given here are based on using R and RStudio.
+
+<br>
+
+Some of the advantages of this approach include:
+
+-   R is fantastically capable software and goes far beyond 'just' statistics;
+
+-   very good for data exploration and data visualisation;
+
+-   great for making your work **reproducible** and sharing it (we'll come back to that);
+
+-   these skills are highly valuable in academia, industry and almost any discipline that involves data.
+
+## Questions about your data
+
+<hr>
+
+There are no rules about how EDA should be approached. However, a good place to start is understanding two broad issues:
+
+-   What type of variation occurs within variables?
+
+-   What type of covariation occurs between variables?
+
+<br>
+
+To answer these questions there are a large number of approaches that can be used that cover:
+
+-   Numerical-type statistics (understanding numbers of measurements, their ranges, means etc.)
+
+-   There are also a wide number of very useful ways to plot data to explore these characteristics
+
+-   No silver bullet and having different 'views' / perspectives on data is very useful
+
+## Some example data to explore
+
+<hr>
+
+We will use some **air pollution** data as a way of exploring some of the techniques for EDA. In the practical session use can be made of this data set ... or maybe you have your own?
+
+```{r eval = FALSE,echo=TRUE}
+AQ <- read.csv("G:/My Drive/York_teaching/air_quality.csv")
+```
+
+```{r echo=FALSE}
+AQ <- readRDS("/Users/davidcarslaw/packages/davidcarslaw.github.io/content/data/openair/AQ.rds")
+```
+
+Look at first few lines of the data:
+
+```{r echo=TRUE}
+head(AQ)
+```
+
+## Some example data to explore
+
+<hr>
+
+Using the R function `summary` is very useful in a wide range of circumstances:
+
+```{r echo=TRUE}
+summary(AQ)
+```
+
+## Using graphs in EDA
+
+<hr>
+
+Graph plotting is an essential component of EDA. They are useful for:
+
+-   Understanding data properties
+
+-   Find patterns in the data
+
+-   Suggest ways in which data can be modelled
+
+<br>
+
+It is generally useful to adopt a 'quick and dirty' approach at this stage, so
+
+-   Plots that can be made quickly --- something that R is great for ...
+
+-   Make lots of plots! Finesse later.
+
+-   Develop a good *personal* understanding of the data
+
+-   Useful to be guided by *some* questions you might want to ask of the data; even if vague
+
+## Histograms
+
+<hr>
+
+::: columns
+::: {.column width="40%"}
+Histograms are very useful for exploring the distribution of variables. The way to plot them in Base R is shown below.
+:::
+
+::: {.column width="60%"}
+```{r}
+#| fig.width: 6
+#| fig.height: 6
+#| echo: TRUE
+hist(AQ$ws)
+```
+:::
+:::
+
+## Histograms --- alternative way of plotting
+
+<hr>
+
+::: columns
+::: {.column width="40%"}
+We can use the excellent plotting package `ggplot2`.[^2]
+:::
+
+::: {.column width="60%"}
+```{r}
+#| fig.width: 4.5
+#| fig.height: 4.5
+#| out-width: 60%
+#| fig-align: 'center'
+library(ggplot2) # load the package
+ggplot(data = AQ, aes(ws)) +
+  geom_histogram()
+```
+:::
+:::
+
+[^2]: You might need to install the package by typing `install.packages(ggplot2)`.
+
+## Box and whisker plots
+
+<hr>
+
+Box and whisker plots both a common and valuable way of considering the distribution of variables. Monthly distribution of NO<sub>2</sub> (nitrogen dioxide):
+
+::: columns
+::: {.column width="60%"}
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: '100%'
+ggplot(data = AQ, aes(x = month, y = no2)) +
+  geom_boxplot()
+```
+:::
+
+::: {.column width="40%"}
+-   A box that stretches from the 25th percentile of the distribution to the 75th percentile (the **interquartile** range (IQR). In horizontal line displays the median value.
+
+-   The points show individual observations that fall more than 1.5 times the IQR from either edge of the box. These points are unusual so are plotted individually.
+
+-   A line (or whisker) that extends from each end of the box and goes to the farthest non-outlier point in the distribution.
+:::
+:::
+
+## Box and whisker plots
+
+<hr>
+
+Recent developments in R make it possible to produce plots that are **interactive**. This can be great when exploring data and can be easy to do.
+
+```{r,fig.width = 6,fig.height=5,message=FALSE,warning=FALSE,eval = FALSE}
+library(plotly)
+ggplot(data = AQ, aes(x = month, y = no2)) +
+  geom_boxplot()
+
+ggplotly()
+```
+
+```{r}
+#| fig.width: 4
+#| fig-height: 4
+#| echo: false
+#| out-width: '80%'
+library(plotly)
+plt <- ggplot(data = AQ, aes(x = month, y = no2)) +
+  geom_boxplot()
+
+ggplotly(plt,width = 800,height = 600)
+```
+
+## Box and whisker plots
+
+What can you say about this plot?
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| echo: false
+ggplot(data = AQ, aes(x = factor(year), y = o3)) +
+   geom_boxplot() +
+  xlab("year") +
+  ylab("ozone (ppb)")
+```
+
+## Scatter plots
+
+<hr>
+
+::: colums
+::: {.column width="40%"}
+-   Probably the most effective way of understanding how two numeric variables are related
+
+-   I use scatter plots all the time --- and the many varieties of them
+
+-   Plot in this case considers how NO<sub>x</sub> and PM<sub>10</sub> are related
+
+-   **What conclusions or questions can be drawn from this plot?**
+:::
+
+::: {.column width="60%"}
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+#| echo: false
+#| out-width: '80%'
+ggplot(data = AQ, aes(x = nox, y = pm10)) + 
+  geom_point() +
+  ylim(0, 600)
+
+```
+:::
+:::
+
+# Interactive scatter plots
+
+<hr>
+
+Often very useful to explore actual values when plotting data.
+
+```{r eval=FALSE}
+Jan2003 <- subset(AQ, month == "Jan" & year == 2003)
+ggplot(data = Jan2003, aes(x = nox, y = pm10)) + 
+  geom_point()
+ggplotly()
+
+```
+
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 50%
+Jan2003 <- subset(AQ, month == "Jan" & year == 2003)
+plt <- ggplot(data = Jan2003, aes(x = nox, y = pm10)) + 
+  geom_point() 
+ggplotly(plt, width = 600,height = 600)
+
+```
+
+## Scatter plots when you have a lot of data
+
+<hr>
+
+::: columns
+::: {.column width="40%"}
+-   Can bin data and plot number of measurements in each bin
+
+-   In this case *hexagonal binning* has been used
+
+-   Highly effective when there is a *lot* of data
+:::
+
+::: {.column width="60%"}
+```{r}
+#| fig-width: 5.5
+#| fig-height: 5
+#| echo: false
+#| out-width: 80%
+ggplot(AQ, aes(x = nox, y = pm10)) + 
+  geom_hex(bins = 50) + 
+  scale_fill_gradientn(colours = openair::openColours("jet", 40)) + 
+  ylim(0, 100)
+
+```
+:::
+:::
+
+## Scatter plot matrices
+
+<hr>
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+#| out-width: '100%'
+pairs(AQ[1:1000, 2:8])
+```
+
+## Introduction to reproducible research {background="#43464B"}
+
+## What is reproducible research?
+
+<hr>
+
+Being able to reproduce scientific experiments and verifying their outcomes is a basic tenet of science.
+
+For simplicity we can think of two main applications:
+
+1.  For 'real' experiments this could mean that someone not involved with the experiment being able to follow all the steps necessary to reproduce the outcomes
+
+    -   following a clear method
+
+    -   confirming the same outcomes
+
+2.  For **data analysis** results are replicable if independent researchers can recreate findings by following the procedures originally used to gather the data and run the computer code.
+
+<br>
+
+For this course focused on data, a good working definition is:
+
+<br>
+
+> [**The data and code used to make a finding are available and they are sufficient for an independent researcher to recreate the finding**]{style="color:purple"}
+
+## Importance of reproducible research
+
+<hr>
+
+So why bother thinking about and adopting reproducible research practices? There are many reasons:
+
+-   From an individual perspective, being able to recreate one's own work is important
+
+    -   ...and very frustrating if you can't! It's too easy to revisit previous work and not be able to replicate it --- we have all been there!
+
+-   **Collaboration**: it is increasingly important to be able to collaborate with others
+
+-   Reproducible research is more likely to be useful for other researchers than non-reproducible research --- more research impact
+
+-   It's becoming more prominent e.g. journals requesting the data and code to reproduce findings ... most important for most important work
+
+-   In general, these approaches lead to improved quality of work whether for research or industry, or anywhere else
+
+## Practical aspects when analysing data
+
+<hr>
+
+All that sounds very worthy, but what does it mean in practice?
+
+<br>
+
+> [**Use the source, Luke!**]{style="color:purple"}
+
+<br>
+
+For data analysis, use 'serious' tools like R and Python and not Excel. Serious tools use **scripts** (i.e. *source code*) to carry out analyses. Why are scripts so useful? Here are some of the reasons:
+
+-   Scripts are written in plain text and are human readable[^3]
+
+-   They encourage a separation between the data and the processing and analysis of the data --- they help avoid the temptation to manually adjust the data directly as is common in Excel
+
+-   They can be easily shared --- email a small text file!
+
+-   They can be brought under **version control** using a system such as *git* and code hosting and sharing sites such as [GitHub](https://github.com/)
+
+[^3]: In contrast to Word (.docx) or Excel (.xlsx) proprietary formats ... they well change in future.
+
+## Producing documents
+
+<hr>
+
+A very common way to work is to carry out analysis in software e.g. Excel, make some plots and paste them into Word. This approach is prone to error and inefficient. For example, it is requires some manual effort to copy and paste and if the data is revised, you need to do it all over again. 
+
+Is there a better way? 
+
+- Recently, it is more common to use methods that mix analysis e.g. in R or Python with ordinary report writing in a *single document*
+
+- The approach is often referred to as **dynamic documents**
+
+- The document (a plain text file!) has ordinary report text and code 'chunks' that carry out the analysis such as making a plot
+
+- The document is compiled and all the code chucks are automatically run
+
+- The output can be a pdf, html or even a Word document
+
+This presentation was produced in exactly this way using R!
+
+## Producing documents — R and python
+
+<hr>
+
+Both R and Python are fantastic for producing reproducible note books (a modern-day lab book), as well as a wide range of other outputs including journal publications, web pages / sites and presentations.
+
+Using R:
+
+- In R use is made of [R markdown](https://rmarkdown.rstudio.com/)
+- A *very* simple mark-up language
+- Extremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)
+- Single R markdown files (.Rmd) in plain text of course!
+
+Using Python:
+
+- Uses [Jupyter Notebook](https://jupyter.org/); formerly called IPython Notebook
+- Similar idea to R markdown
