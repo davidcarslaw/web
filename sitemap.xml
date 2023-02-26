@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://davidcarslaw.github.io/web/index.html</loc>
-    <lastmod>2023-02-26T13:22:47.281Z</lastmod>
+    <lastmod>2023-02-26T13:34:23.315Z</lastmod>
   </url>
   <url>
     <loc>https://davidcarslaw.github.io/web/about.html</loc>
-    <lastmod>2023-02-26T13:22:48.104Z</lastmod>
+    <lastmod>2023-02-26T13:34:24.119Z</lastmod>
+  </url>
+  <url>
+    <loc>https://davidcarslaw.github.io/web/test.html</loc>
+    <lastmod>2023-02-26T13:34:24.417Z</lastmod>
   </url>
 </urlset>
