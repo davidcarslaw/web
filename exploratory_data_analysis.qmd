@@ -6,6 +6,7 @@ date: "3 March 2023"
 date-format: long
 format:
   revealjs: 
+    theme: ["theme/theme.scss"]
     code-copy: true
     center-title-slide: false
     # include-in-header: heading-meta.html
@@ -17,8 +18,8 @@ format:
     width: 1920
     slide-number: c/t
     preview-links: auto
-#    logo: images/quarto.png
-#    css: styles.css
+    logo: images/UOY-logo.svg
+    css: styles.css
     footer: <https://davidcarslaw.github.io/web/exploratory_data_analysis.html#/>
 execute: 
   eval: true
@@ -184,6 +185,7 @@ Histograms are very useful for exploring the distribution of variables. The way 
 #| fig.width: 6
 #| fig.height: 6
 #| echo: TRUE
+#| out-width: '80%'
 hist(AQ$ws)
 ```
 :::
