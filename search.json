@@ -151,7 +151,7 @@
     "href": "exploratory_data_analysis.html#producing-documents-r-and-python",
     "title": "Experimental design and exploratory data analysis",
     "section": "Producing documents — R and python",
-    "text": "Producing documents — R and python\n\nBoth R and Python are fantastic for producing reproducible note books (a modern-day lab book), as well as a wide range of other outputs including journal publications, web pages / sites and presentations.\nUsing R:\n\nIn R use is made of R markdown\n\nA very simple mark-up language\nExtremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)\nSingle R markdown files (.Rmd) in plain text of course!\n\nUsing Python:\n\nUses Jupyter Notebook; formerly called IPython Notebook\nSimilar idea to R markdown\n\n\n\nhttps://davidcarslaw.github.io/web/exploratory_data_analysis.html#/"
+    "text": "Producing documents — R and python\n\nBoth R and Python are fantastic for producing reproducible note books (a modern-day lab book), as well as a wide range of other outputs including journal publications, web pages / sites and presentations.\nUsing R:\n\nIn R use is made of R markdown\n\nA very simple mark-up language\nExtremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)\nSingle R markdown files (.Rmd) in plain text of course!\n\nUsing Python:\n\nUses Jupyter Notebook; formerly called IPython Notebook\nSimilar idea to R markdown\n\n\n\n\nhttps://davidcarslaw.github.io/web/exploratory_data_analysis.html#/"
   },
   {
     "objectID": "index.html",
