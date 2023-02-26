@@ -1,10 +1,17 @@
 [
   {
+    "objectID": "exploratory_data_analysis.html#hello-there",
+    "href": "exploratory_data_analysis.html#hello-there",
+    "title": "Experimental design and exploratory data analysis",
+    "section": "Hello, There",
+    "text": "Hello, There\nThis presentation will show you examples of what you can do with Quarto and Reveal.js, including:\n\nPresenting code and LaTeX equations\nIncluding computations in slide output\nImage, video, and iframe backgrounds\nFancy transitions and animations\nPrinting to PDF\n\n…and much more"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "web",
+    "title": "David Carslaw’s web resources",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "A website to publish ad-hoc web-based resources such as presentations."
   },
   {
     "objectID": "about.html",
@@ -12,12 +19,5 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "test.html#hello-there",
-    "href": "test.html#hello-there",
-    "title": "Quarto Presentations",
-    "section": "Hello, There",
-    "text": "Hello, There\nThis presentation will show you examples of what you can do with Quarto and Reveal.js, including:\n\nPresenting code and LaTeX equations\nIncluding computations in slide output\nImage, video, and iframe backgrounds\nFancy transitions and animations\nPrinting to PDF\n\n…and much more"
   }
 ]

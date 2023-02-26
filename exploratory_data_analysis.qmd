@@ -1,6 +1,9 @@
 ---
-title: "Quarto Presentations"
-subtitle: "Create beautiful interactive slide decks with Reveal.js"
+title: Experimental design and exploratory data analysis 
+subtitle: "Techniques for postgraduates "
+author: "Professor David Carslaw"
+date: "3 March 2023"
+date-format: long
 format:
   revealjs: 
     slide-number: true
@@ -9,7 +12,7 @@ format:
     preview-links: auto
 #    logo: images/quarto.png
 #    css: styles.css
-    footer: <https://quarto.org>
+    footer: <https://davidcarslaw.github.io/web/exploratory_data_analysis.html#/>
 ---
 
 ## Hello, There
