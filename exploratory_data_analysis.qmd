@@ -9,7 +9,6 @@ format:
     theme: ["theme/theme.scss"]
     code-copy: true
     center-title-slide: false
-    # include-in-header: heading-meta.html
     code-link: true
     code-overflow: wrap
     code-line-numbers: false
@@ -18,8 +17,7 @@ format:
     width: 1920
     slide-number: c/t
     preview-links: auto
-    logo: images/UOY-logo.svg
-    css: styles.css
+    logo: "images/UOY-logo.svg"
     footer: <https://davidcarslaw.github.io/web/exploratory_data_analysis.html#/>
 execute: 
   eval: true
