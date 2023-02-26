@@ -4,21 +4,21 @@
     "href": "exploratory_data_analysis.html#section",
     "title": "",
     "section": "",
-    "text": "Experimental design and exploratory data analysis\n\n\nTechniques for postgraduates\n\n\nProfessor David Carslaw\n\n\nDepeartment of Chemistry, University of York\n\n\n3rd March 2023"
+    "text": "Experimental design and exploratory data analysis\n\n\nTechniques for postgraduates\n\n\nProfessor David Carslaw\n\n\nDepartment of Chemistry, University of York\n\n\n3rd March 2023"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#section-1",
+    "href": "exploratory_data_analysis.html#section-1",
+    "title": "",
+    "section": "",
+    "text": "Exploratory data analysis"
   },
   {
     "objectID": "exploratory_data_analysis.html#exploratory-data-analysis",
     "href": "exploratory_data_analysis.html#exploratory-data-analysis",
     "title": "",
     "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis"
-  },
-  {
-    "objectID": "exploratory_data_analysis.html#exploratory-data-analysis-1",
-    "href": "exploratory_data_analysis.html#exploratory-data-analysis-1",
-    "title": "",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey\n\n\nExploratory data analysis (EDA) is an important approach that has developed over many years\nIt is important to undertake when trying to understand almost any data\nThe broad goal is understanding your data and its characteristics\nNo set rules as such, but there are common types of analysis that are undertaken"
+    "text": "Exploratory data analysis\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey\n\n\nExploratory data analysis (EDA) is an important approach that has developed over many years\nIt is important to undertake when trying to understand almost any data\nThe broad goal is understanding your data and its characteristics\nNo set rules as such, but there are common types of analysis that are undertaken"
   },
   {
     "objectID": "exploratory_data_analysis.html#some-aims-of-eda",
@@ -88,7 +88,7 @@
     "href": "exploratory_data_analysis.html#box-and-whisker-plots-1",
     "title": "",
     "section": "Box and whisker plots",
-    "text": "Box and whisker plots\n\nRecent developments in R make it possible to produce plots that are interactive. This can be great when exploring data and can be easy to do.\n\nlibrary(plotly)\nggplot(data = AQ, aes(x = month, y = no2)) +\n  geom_boxplot()\n\nggplotly()"
+    "text": "Box and whisker plots\n\n\n\nRecent developments in R make it possible to produce plots that are interactive. This can be great when exploring data and can be easy to do.\n\n\nlibrary(plotly)\nggplot(data = AQ, aes(x = month, y = no2)) +\n  geom_boxplot()\n\nggplotly()"
   },
   {
     "objectID": "exploratory_data_analysis.html#box-and-whisker-plots-2",
@@ -105,6 +105,13 @@
     "text": "Scatter plots\n\n\n\n\nProbably the most effective way of understanding how two numeric variables are related\nI use scatter plots all the time — and the many varieties of them\nPlot in this case considers how NOx and PM10 are related\nWhat conclusions or questions can be drawn from this plot?"
   },
   {
+    "objectID": "exploratory_data_analysis.html#interactive-scatter-plots",
+    "href": "exploratory_data_analysis.html#interactive-scatter-plots",
+    "title": "",
+    "section": "Interactive scatter plots",
+    "text": "Interactive scatter plots\n\n\n\nOften very useful to explore actual values when plotting data.\n\n\nJan2003 <- subset(AQ, month == \"Jan\" & year == 2003)\nggplot(data = Jan2003, aes(x = nox, y = pm10)) + \n  geom_point()\nggplotly()"
+  },
+  {
     "objectID": "exploratory_data_analysis.html#scatter-plots-when-you-have-a-lot-of-data",
     "href": "exploratory_data_analysis.html#scatter-plots-when-you-have-a-lot-of-data",
     "title": "",
@@ -119,10 +126,10 @@
     "text": "Scatter plot matrices\n\n\npairs(AQ[1:1000, 2:8])"
   },
   {
-    "objectID": "exploratory_data_analysis.html#introduction-to-reproducible-research",
-    "href": "exploratory_data_analysis.html#introduction-to-reproducible-research",
+    "objectID": "exploratory_data_analysis.html#section-2",
+    "href": "exploratory_data_analysis.html#section-2",
     "title": "",
-    "section": "Introduction to reproducible research",
+    "section": "",
     "text": "Introduction to reproducible research"
   },
   {
@@ -158,7 +165,7 @@
     "href": "exploratory_data_analysis.html#producing-documents-r-and-python",
     "title": "",
     "section": "Producing documents — R and python",
-    "text": "Producing documents — R and python\n\nBoth R and Python are fantastic for producing reproducible note books (a modern-day lab book), as well as a wide range of other outputs including journal publications, web pages / sites and presentations.\nUsing R:\n\nIn R use is made of R markdown\n\nA very simple mark-up language\nExtremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)\nSingle R markdown files (.Rmd) in plain text of course!\n\nUsing Python:\n\nUses Jupyter Notebook; formerly called IPython Notebook\nSimilar idea to R markdown\n\n\n\nhttps://davidcarslaw.github.io/web/exploratory_data_analysis.html#/"
+    "text": "Producing documents — R and python\n\nBoth R and Python are fantastic for producing reproducible note books (a modern-day lab book), as well as a wide range of other outputs including journal publications, web pages / sites and presentations.\nUsing R:\n\nIn R use is made of R markdown\n\nA very simple mark-up language\nExtremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)\nSingle R markdown files (.Rmd) in plain text of course!\n\nUsing Python:\n\nUses Jupyter Notebook; formerly called IPython Notebook\nSimilar idea to R markdown\n\n\n\nhttps://davidcarslaw.github.io/web/exploratory_data_analysis.html"
   },
   {
     "objectID": "index.html",
@@ -166,12 +173,5 @@
     "title": "David Carslaw’s web resources",
     "section": "",
     "text": "A website to publish ad-hoc web-based resources such as presentations."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]
