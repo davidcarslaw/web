@@ -7,7 +7,7 @@ website:
     search: true
     contents:
       - index.qmd
-      - section: "Presentations"
+      - section: "Teaching"
         contents:
           - text: "Exploratory data analysis"
             href: exploratory_data_analysis.qmd

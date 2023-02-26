@@ -13,7 +13,7 @@ format:
     slide-number: c/t
     preview-links: auto
  #ß   logo: "images/UOY-logo.svg"
-    footer: <https://davidcarslaw.github.io/web/exploratory_data_analysis.html#/>
+    footer: <https://davidcarslaw.github.io/web/exploratory_data_analysis.html>
 execute: 
   eval: true
   echo: true
@@ -31,7 +31,7 @@ execute:
 <h2> Techniques for postgraduates </h2>
 
 <p>Professor David Carslaw</p>
-<p>Depeartment of Chemistry, University of York</p>
+<p>Department of Chemistry, University of York</p>
 
 <p> 3rd March 2023 </p>
 <br>
@@ -45,6 +45,8 @@ execute:
 
 -   Introduction to reproducible research
 
+. . . 
+
 > <span style="color:purple"> **Much less emphasis on common statistical tests e.g. hypothesis testing ... more emphasis on approaches to working with and analysing experimental data**
 
 -   Will cover some useful concepts and principles over the next hour
@@ -53,11 +55,12 @@ execute:
 
 -   Session in a couple of weeks will be a chance to have a go yourself
 
-## Exploratory data analysis {background="#43464B"}
 
-## Exploratory data analysis
+## {background="#43464B"}
 
-<hr>
+<h1> Exploratory data analysis </h1>
+
+## Exploratory data analysis 
 
 *"Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise." --- John Tukey*
 
@@ -255,7 +258,15 @@ ggplot(data = AQ, aes(x = month, y = no2)) +
 
 <hr>
 
+::: {.columns}
+
+::: {.column width="40%"}
+
 Recent developments in R make it possible to produce plots that are **interactive**. This can be great when exploring data and can be easy to do.
+
+:::
+
+::: {.column width="60%"}
 
 ```{r,fig.width = 6,fig.height=5,message=FALSE,warning=FALSE,eval = FALSE}
 library(plotly)
@@ -269,13 +280,16 @@ ggplotly()
 #| fig.width: 4
 #| fig-height: 4
 #| echo: false
-#| out-width: '80%'
+#| out-width: '90%'
 library(plotly)
 plt <- ggplot(data = AQ, aes(x = month, y = no2)) +
   geom_boxplot()
 
-ggplotly(plt,width = 800,height = 600)
+ggplotly(plt,width = 900,height = 650)
 ```
+:::
+:::
+
 
 ## Box and whisker plots
 
@@ -322,11 +336,19 @@ ggplot(data = AQ, aes(x = nox, y = pm10)) +
 :::
 :::
 
-# Interactive scatter plots
+## Interactive scatter plots
 
 <hr>
 
+::: {.columns}
+
+::: {.column width="40%"}
+
 Often very useful to explore actual values when plotting data.
+
+:::
+
+::: {.column width="60%"}
 
 ```{r eval=FALSE}
 Jan2003 <- subset(AQ, month == "Jan" & year == 2003)
@@ -347,6 +369,9 @@ plt <- ggplot(data = Jan2003, aes(x = nox, y = pm10)) +
 ggplotly(plt, width = 600,height = 600)
 
 ```
+
+:::
+:::
 
 ## Scatter plots when you have a lot of data
 
@@ -387,7 +412,9 @@ ggplot(AQ, aes(x = nox, y = pm10)) +
 pairs(AQ[1:1000, 2:8])
 ```
 
-## Introduction to reproducible research {background="#43464B"}
+## {background="#43464B"}
+
+<h1> Introduction to reproducible research </h1>
 
 ## What is reproducible research?
 
