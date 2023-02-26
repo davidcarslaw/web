@@ -9,8 +9,9 @@ website:
       - index.qmd
       - section: "Presentations"
         contents:
-          - exploratory_data_analysis.qmd
-         
+          - text: "Exploratory data analysis"
+            href: exploratory_data_analysis.qmd
+            
 format:
   html:
     theme: cosmo

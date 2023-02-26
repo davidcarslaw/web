@@ -1,9 +1,4 @@
 ---
-title: Experimental design and exploratory data analysis 
-subtitle: "Techniques for postgraduates "
-author: "Professor David Carslaw"
-date: "3 March 2023"
-date-format: long
 format:
   revealjs: 
     theme: ["theme/theme.scss"]
@@ -17,7 +12,7 @@ format:
     width: 1920
     slide-number: c/t
     preview-links: auto
-    logo: "images/UOY-logo.svg"
+ #ß   logo: "images/UOY-logo.svg"
     footer: <https://davidcarslaw.github.io/web/exploratory_data_analysis.html#/>
 execute: 
   eval: true
@@ -26,6 +21,21 @@ execute:
   warning: false
   freeze: auto
 ---
+
+## {background-color="white"}
+
+![](images/UOY-Logo.svg){.absolute top=700 left=660 width="600"}
+
+<h1> Experimental design and exploratory data analysis </h1>
+
+<h2> Techniques for postgraduates </h2>
+
+<p>Professor David Carslaw</p>
+<p>Depeartment of Chemistry, University of York</p>
+
+<p> 3rd March 2023 </p>
+<br>
+
 
 # Topics for today
 
@@ -62,6 +72,8 @@ execute:
 -   No set rules as such, but there are common types of analysis that are undertaken
 
 ## Some aims of EDA
+
+<hr>
 
 -   Get a 'feel' for your data. At this stage it is useful to check whether the data look to be reasonable based on experience and a theoretical understanding
 
@@ -267,6 +279,8 @@ ggplotly(plt,width = 800,height = 600)
 
 ## Box and whisker plots
 
+<hr>
+
 What can you say about this plot?
 
 ```{r}
@@ -445,23 +459,23 @@ For data analysis, use 'serious' tools like R and Python and not Excel. Serious 
 
 <hr>
 
-A very common way to work is to carry out analysis in software e.g. Excel, make some plots and paste them into Word. This approach is prone to error and inefficient. For example, it is requires some manual effort to copy and paste and if the data is revised, you need to do it all over again. 
+A very common way to work is to carry out analysis in software e.g. Excel, make some plots and paste them into Word. This approach is prone to error and inefficient. For example, it is requires some manual effort to copy and paste and if the data is revised, you need to do it all over again.
 
-Is there a better way? 
+Is there a better way?
 
-- Recently, it is more common to use methods that mix analysis e.g. in R or Python with ordinary report writing in a *single document*
+-   Recently, it is more common to use methods that mix analysis e.g. in R or Python with ordinary report writing in a *single document*
 
-- The approach is often referred to as **dynamic documents**
+-   The approach is often referred to as **dynamic documents**
 
-- The document (a plain text file!) has ordinary report text and code 'chunks' that carry out the analysis such as making a plot
+-   The document (a plain text file!) has ordinary report text and code 'chunks' that carry out the analysis such as making a plot
 
-- The document is compiled and all the code chucks are automatically run
+-   The document is compiled and all the code chucks are automatically run
 
-- The output can be a pdf, html or even a Word document
+-   The output can be a pdf, html or even a Word document
 
 This presentation was produced in exactly this way using R!
 
-## Producing documents — R and python
+## Producing documents --- R and python
 
 <hr>
 
@@ -469,12 +483,12 @@ Both R and Python are fantastic for producing reproducible note books (a modern-
 
 Using R:
 
-- In R use is made of [R markdown](https://rmarkdown.rstudio.com/)
-- A *very* simple mark-up language
-- Extremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)
-- Single R markdown files (.Rmd) in plain text of course!
+-   In R use is made of [R markdown](https://rmarkdown.rstudio.com/)
+-   A *very* simple mark-up language
+-   Extremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)
+-   Single R markdown files (.Rmd) in plain text of course!
 
 Using Python:
 
-- Uses [Jupyter Notebook](https://jupyter.org/); formerly called IPython Notebook
-- Similar idea to R markdown
+-   Uses [Jupyter Notebook](https://jupyter.org/); formerly called IPython Notebook
+-   Similar idea to R markdown
