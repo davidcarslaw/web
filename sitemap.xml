@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://davidcarslaw.github.io/web/exploratory_data_analysis.html</loc>
-    <lastmod>2023-02-26T13:46:11.304Z</lastmod>
+    <lastmod>2023-02-26T16:04:39.566Z</lastmod>
   </url>
   <url>
     <loc>https://davidcarslaw.github.io/web/index.html</loc>
-    <lastmod>2023-02-26T13:46:11.517Z</lastmod>
+    <lastmod>2023-02-26T16:04:39.819Z</lastmod>
   </url>
   <url>
     <loc>https://davidcarslaw.github.io/web/about.html</loc>
-    <lastmod>2023-02-26T13:46:12.416Z</lastmod>
+    <lastmod>2023-02-26T16:04:40.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://davidcarslaw.github.io/web/presentations.html</loc>
+    <lastmod>2023-02-26T16:04:40.825Z</lastmod>
   </url>
 </urlset>
