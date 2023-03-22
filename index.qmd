@@ -1,5 +1,0 @@
----
-title: "David Carslaw's web resources"
----
-
-A website to publish ad-hoc web-based resources such as presentations.
