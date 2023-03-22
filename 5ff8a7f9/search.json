@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "exploratory_data_analysis.html#section",
+    "href": "exploratory_data_analysis.html#section",
+    "title": "",
+    "section": "",
+    "text": "Experimental design and exploratory data analysis\n\n\nTechniques for postgraduates\n\n\nProfessor David Carslaw\n\n\nDepartment of Chemistry, University of York\n\n\n3rd March 2023"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#section-1",
+    "href": "exploratory_data_analysis.html#section-1",
+    "title": "",
+    "section": "",
+    "text": "Exploratory data analysis"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#exploratory-data-analysis",
+    "href": "exploratory_data_analysis.html#exploratory-data-analysis",
+    "title": "",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey\n\n\nExploratory data analysis (EDA) is an important approach that has developed over many years\nIt is important to undertake when trying to understand almost any data\nThe broad goal is understanding your data and its characteristics\nNo set rules as such, but there are common types of analysis that are undertaken"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#some-aims-of-eda",
+    "href": "exploratory_data_analysis.html#some-aims-of-eda",
+    "title": "",
+    "section": "Some aims of EDA",
+    "text": "Some aims of EDA\n\n\nGet a ‘feel’ for your data. At this stage it is useful to check whether the data look to be reasonable based on experience and a theoretical understanding\nEDA is useful to help generate questions about data.\nThese questions can be addressed by visualising, transforming, and modelling data.\nOften, EDA will help to refine questions and/or generate new questions…\nTo some extent, a move away from hypothesis testing to considering the data to help develop hypotheses"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#tools-for-eda",
+    "href": "exploratory_data_analysis.html#tools-for-eda",
+    "title": "",
+    "section": "Tools for EDA",
+    "text": "Tools for EDA\n\nOver the past 20 years R has become the leading software for conducting statistical analysis — or more generally data analysis.1\nIn our examples class next week we will use R and an Integrated Development Environment (aka a nice ‘front-end’!) called RStudio. The examples given here are based on using R and RStudio.\n\nSome of the advantages of this approach include:\n\nR is fantastically capable software and goes far beyond ‘just’ statistics;\nvery good for data exploration and data visualisation;\ngreat for making your work reproducible and sharing it (we’ll come back to that);\nthese skills are highly valuable in academia, industry and almost any discipline that involves data.\nProbably more accurate to say R and python. Both of these languages are highly capable and it’s highly recommended to learn one, or both!"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#questions-about-your-data",
+    "href": "exploratory_data_analysis.html#questions-about-your-data",
+    "title": "",
+    "section": "Questions about your data",
+    "text": "Questions about your data\n\nThere are no rules about how EDA should be approached. However, a good place to start is understanding two broad issues:\n\nWhat type of variation occurs within variables?\nWhat type of covariation occurs between variables?\n\n\nTo answer these questions there are a large number of approaches that can be used that cover:\n\nNumerical-type statistics (understanding numbers of measurements, their ranges, means etc.)\nThere are also a wide number of very useful ways to plot data to explore these characteristics\nNo silver bullet and having different ‘views’ / perspectives on data is very useful"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#some-example-data-to-explore",
+    "href": "exploratory_data_analysis.html#some-example-data-to-explore",
+    "title": "",
+    "section": "Some example data to explore",
+    "text": "Some example data to explore\n\nWe will use some air pollution data as a way of exploring some of the techniques for EDA. In the practical session use can be made of this data set … or maybe you have your own?\n\nAQ <- read.csv(\"G:/My Drive/York_teaching/air_quality.csv\")\n\n\n\n\nLook at first few lines of the data:\n\nhead(AQ)\n\n                 date   ws  wd nox no2 o3 pm10    so2      co pm25 month year\n1 1998-01-01 00:00:00 0.60 280 285  39  1   29 4.7225  3.3725   NA   Jan 1998\n2 1998-01-01 01:00:00 2.16 230  NA  NA NA   37     NA      NA   NA   Jan 1998\n3 1998-01-01 02:00:00 2.76 190  NA  NA  3   34 6.8300  9.6025   NA   Jan 1998\n4 1998-01-01 03:00:00 2.16 170 493  52  3   35 7.6625 10.2175   NA   Jan 1998\n5 1998-01-01 04:00:00 2.40 180 468  78  2   34 8.0700  8.9125   NA   Jan 1998\n6 1998-01-01 05:00:00 3.00 190 264  42  0   16 5.5050  3.0525   NA   Jan 1998"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#some-example-data-to-explore-1",
+    "href": "exploratory_data_analysis.html#some-example-data-to-explore-1",
+    "title": "",
+    "section": "Some example data to explore",
+    "text": "Some example data to explore\n\nUsing the R function summary is very useful in a wide range of circumstances:\n\nsummary(AQ)\n\n      date                           ws               wd           nox        \n Min.   :1998-01-01 00:00:00   Min.   : 0.000   Min.   :  0   Min.   :   0.0  \n 1st Qu.:1999-11-14 15:00:00   1st Qu.: 2.600   1st Qu.:140   1st Qu.:  82.0  \n Median :2001-09-27 06:00:00   Median : 4.100   Median :210   Median : 153.0  \n Mean   :2001-09-27 06:00:00   Mean   : 4.489   Mean   :200   Mean   : 178.8  \n 3rd Qu.:2003-08-10 21:00:00   3rd Qu.: 5.760   3rd Qu.:270   3rd Qu.: 249.0  \n Max.   :2005-06-23 12:00:00   Max.   :20.160   Max.   :360   Max.   :1144.0  \n                               NA's   :632      NA's   :219   NA's   :2423    \n      no2               o3              pm10             so2        \n Min.   :  0.00   Min.   : 0.000   Min.   :  1.00   Min.   : 0.000  \n 1st Qu.: 33.00   1st Qu.: 2.000   1st Qu.: 22.00   1st Qu.: 2.175  \n Median : 46.00   Median : 4.000   Median : 31.00   Median : 4.000  \n Mean   : 49.13   Mean   : 7.122   Mean   : 34.38   Mean   : 4.795  \n 3rd Qu.: 61.00   3rd Qu.:10.000   3rd Qu.: 44.00   3rd Qu.: 6.500  \n Max.   :206.00   Max.   :70.000   Max.   :801.00   Max.   :63.205  \n NA's   :2438     NA's   :2589     NA's   :2162     NA's   :10450   \n       co              pm25           month           year          \n Min.   : 0.000   Min.   :  0.0   Jan    : 5952   Length:65533      \n 1st Qu.: 0.635   1st Qu.: 13.0   Mar    : 5952   Class :character  \n Median : 1.140   Median : 20.0   May    : 5952   Mode  :character  \n Mean   : 1.464   Mean   : 21.7   Apr    : 5760                     \n 3rd Qu.: 1.980   3rd Qu.: 28.0   Jun    : 5581                     \n Max.   :19.705   Max.   :398.0   Feb    : 5424                     \n NA's   :1936     NA's   :8775    (Other):30912"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#using-graphs-in-eda",
+    "href": "exploratory_data_analysis.html#using-graphs-in-eda",
+    "title": "",
+    "section": "Using graphs in EDA",
+    "text": "Using graphs in EDA\n\nGraph plotting is an essential component of EDA. They are useful for:\n\nUnderstanding data properties\nFind patterns in the data\nSuggest ways in which data can be modelled\n\n\nIt is generally useful to adopt a ‘quick and dirty’ approach at this stage, so\n\nPlots that can be made quickly — something that R is great for …\nMake lots of plots! Finesse later.\nDevelop a good personal understanding of the data\nUseful to be guided by some questions you might want to ask of the data; even if vague"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#histograms",
+    "href": "exploratory_data_analysis.html#histograms",
+    "title": "",
+    "section": "Histograms",
+    "text": "Histograms\n\n\n\nHistograms are very useful for exploring the distribution of variables. The way to plot them in Base R is shown below.\n\n\nhist(AQ$ws)"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#histograms-alternative-way-of-plotting",
+    "href": "exploratory_data_analysis.html#histograms-alternative-way-of-plotting",
+    "title": "",
+    "section": "Histograms — alternative way of plotting",
+    "text": "Histograms — alternative way of plotting\n\n\n\nWe can use the excellent plotting package ggplot2.1\n\n\nlibrary(ggplot2) # load the package\nggplot(data = AQ, aes(ws)) +\n  geom_histogram()\n\n\n\n\n\n\n\n\n\nYou might need to install the package by typing install.packages(ggplot2)."
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#box-and-whisker-plots",
+    "href": "exploratory_data_analysis.html#box-and-whisker-plots",
+    "title": "",
+    "section": "Box and whisker plots",
+    "text": "Box and whisker plots\n\nBox and whisker plots both a common and valuable way of considering the distribution of variables. Monthly distribution of NO2 (nitrogen dioxide):\n\n\n\nggplot(data = AQ, aes(x = month, y = no2)) +\n  geom_boxplot()\n\n\n\n\n\n\nA box that stretches from the 25th percentile of the distribution to the 75th percentile (the interquartile range (IQR). In horizontal line displays the median value.\nThe points show individual observations that fall more than 1.5 times the IQR from either edge of the box. These points are unusual so are plotted individually.\nA line (or whisker) that extends from each end of the box and goes to the farthest non-outlier point in the distribution."
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#box-and-whisker-plots-1",
+    "href": "exploratory_data_analysis.html#box-and-whisker-plots-1",
+    "title": "",
+    "section": "Box and whisker plots",
+    "text": "Box and whisker plots\n\n\n\nRecent developments in R make it possible to produce plots that are interactive. This can be great when exploring data and can be easy to do.\n\n\nlibrary(plotly)\nggplot(data = AQ, aes(x = month, y = no2)) +\n  geom_boxplot()\n\nggplotly()"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#box-and-whisker-plots-2",
+    "href": "exploratory_data_analysis.html#box-and-whisker-plots-2",
+    "title": "",
+    "section": "Box and whisker plots",
+    "text": "Box and whisker plots\n\nWhat can you say about this plot?"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#scatter-plots",
+    "href": "exploratory_data_analysis.html#scatter-plots",
+    "title": "",
+    "section": "Scatter plots",
+    "text": "Scatter plots\n\n\n\n\nProbably the most effective way of understanding how two numeric variables are related\nI use scatter plots all the time — and the many varieties of them\nPlot in this case considers how NOx and PM10 are related\nWhat conclusions or questions can be drawn from this plot?"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#interactive-scatter-plots",
+    "href": "exploratory_data_analysis.html#interactive-scatter-plots",
+    "title": "",
+    "section": "Interactive scatter plots",
+    "text": "Interactive scatter plots\n\n\n\nOften very useful to explore actual values when plotting data.\n\n\nJan2003 <- subset(AQ, month == \"Jan\" & year == 2003)\nggplot(data = Jan2003, aes(x = nox, y = pm10)) + \n  geom_point()\nggplotly()"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#scatter-plots-when-you-have-a-lot-of-data",
+    "href": "exploratory_data_analysis.html#scatter-plots-when-you-have-a-lot-of-data",
+    "title": "",
+    "section": "Scatter plots when you have a lot of data",
+    "text": "Scatter plots when you have a lot of data\n\n\n\n\nCan bin data and plot number of measurements in each bin\nIn this case hexagonal binning has been used\nHighly effective when there is a lot of data"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#scatter-plot-matrices",
+    "href": "exploratory_data_analysis.html#scatter-plot-matrices",
+    "title": "",
+    "section": "Scatter plot matrices",
+    "text": "Scatter plot matrices\n\n\npairs(AQ[1:1000, 2:8])"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#section-2",
+    "href": "exploratory_data_analysis.html#section-2",
+    "title": "",
+    "section": "",
+    "text": "Introduction to reproducible research"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#what-is-reproducible-research",
+    "href": "exploratory_data_analysis.html#what-is-reproducible-research",
+    "title": "",
+    "section": "What is reproducible research?",
+    "text": "What is reproducible research?\n\nBeing able to reproduce scientific experiments and verifying their outcomes is a basic tenet of science.\nFor simplicity we can think of two main applications:\n\n\nFor ‘real’ experiments this could mean that someone not involved with the experiment being able to follow all the steps necessary to reproduce the outcomes\n\nfollowing a clear method\nconfirming the same outcomes\n\n\nFor data analysis results are replicable if independent researchers can recreate findings by following the procedures originally used to gather the data and run the computer code.\n\n\nFor this course focused on data, a good working definition is:\n\n\nThe data and code used to make a finding are available and they are sufficient for an independent researcher to recreate the finding"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#importance-of-reproducible-research",
+    "href": "exploratory_data_analysis.html#importance-of-reproducible-research",
+    "title": "",
+    "section": "Importance of reproducible research",
+    "text": "Importance of reproducible research\n\nSo why bother thinking about and adopting reproducible research practices? There are many reasons:\n\n\nFrom an individual perspective, being able to recreate one’s own work is important\n\n…and very frustrating if you can’t! It’s too easy to revisit previous work and not be able to replicate it — we have all been there!\n\n\nCollaboration: it is increasingly important to be able to collaborate with others\nReproducible research is more likely to be useful for other researchers than non-reproducible research — more research impact\nIt’s becoming more prominent e.g. journals requesting the data and code to reproduce findings … most important for most important work\nIn general, these approaches lead to improved quality of work whether for research or industry, or anywhere else"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#practical-aspects-when-analysing-data",
+    "href": "exploratory_data_analysis.html#practical-aspects-when-analysing-data",
+    "title": "",
+    "section": "Practical aspects when analysing data",
+    "text": "Practical aspects when analysing data\n\nAll that sounds very worthy, but what does it mean in practice?\n\n\nUse the source, Luke!\n\n\nFor data analysis, use ‘serious’ tools like R and Python and not Excel. Serious tools use scripts (i.e. source code) to carry out analyses. Why are scripts so useful? Here are some of the reasons:\n\nScripts are written in plain text and are human readable1\nThey encourage a separation between the data and the processing and analysis of the data — they help avoid the temptation to manually adjust the data directly as is common in Excel\nThey can be easily shared — email a small text file!\nThey can be brought under version control using a system such as git and code hosting and sharing sites such as GitHub\nIn contrast to Word (.docx) or Excel (.xlsx) proprietary formats … they well change in future."
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#producing-documents",
+    "href": "exploratory_data_analysis.html#producing-documents",
+    "title": "",
+    "section": "Producing documents",
+    "text": "Producing documents\n\nA very common way to work is to carry out analysis in software e.g. Excel, make some plots and paste them into Word. This approach is prone to error and inefficient. For example, it is requires some manual effort to copy and paste and if the data is revised, you need to do it all over again.\nIs there a better way?\n\nRecently, it is more common to use methods that mix analysis e.g. in R or Python with ordinary report writing in a single document\nThe approach is often referred to as dynamic documents\nThe document (a plain text file!) has ordinary report text and code ‘chunks’ that carry out the analysis such as making a plot\nThe document is compiled and all the code chucks are automatically run\nThe output can be a pdf, html or even a Word document\n\nThis presentation was produced in exactly this way using R!"
+  },
+  {
+    "objectID": "exploratory_data_analysis.html#producing-documents-r-and-python",
+    "href": "exploratory_data_analysis.html#producing-documents-r-and-python",
+    "title": "",
+    "section": "Producing documents — R and python",
+    "text": "Producing documents — R and python\n\nBoth R and Python are fantastic for producing reproducible note books (a modern-day lab book), as well as a wide range of other outputs including journal publications, web pages / sites and presentations.\nUsing R:\n\nIn R use is made of R markdown\n\nA very simple mark-up language\nExtremely versatile outputs including pdf (via LaTeX) and html (great for interactive graphics)\nSingle R markdown files (.Rmd) in plain text of course!\n\nUsing Python:\n\nUses Jupyter Notebook; formerly called IPython Notebook\nSimilar idea to R markdown\n\n\n\nhttps://davidcarslaw.github.io/web/exploratory_data_analysis.html"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "David Carslaw’s web resources",
+    "section": "",
+    "text": "A website to publish ad-hoc web-based resources such as presentations."
+  },
+  {
+    "objectID": "IAQM_2023.html#section",
+    "href": "IAQM_2023.html#section",
+    "title": "",
+    "section": "",
+    "text": "Recent developments in the openair suite of data analysis packages\n\n\nMeasuring Air Quality 2023\n\n\n\nDavid Carslaw\n\n\nDepartment of Chemistry, University of York\n\n\nRicardo Energy & Environment\n\n\n28th March 2023\n\n\n\nhttps://davidcarslaw.github.io/web/IAQM_2023.html"
+  },
+  {
+    "objectID": "IAQM_2023.html#openair",
+    "href": "IAQM_2023.html#openair",
+    "title": "",
+    "section": "openair",
+    "text": "openair\n\nA package of tools developed in open source software called R specifically designed for air quality data analysis\n\n\n\nUsed extensively worldwide by academia, the public and private sectors\n\nMany functions covering a wide range of issues\n\nData import from extensive UK networks\nDirectional analysis\nSource attribution\nBack trajectories\nModel evaluation\nUtility functions\n\n\nOver 400,000 downloads\nSister packages: openairmaps, worldmet and deweather"
+  },
+  {
+    "objectID": "IAQM_2023.html#section-1",
+    "href": "IAQM_2023.html#section-1",
+    "title": "",
+    "section": "",
+    "text": "Accessing UK Air Quality Data"
+  },
+  {
+    "objectID": "IAQM_2023.html#air-quality-sites-available-in-the-uk",
+    "href": "IAQM_2023.html#air-quality-sites-available-in-the-uk",
+    "title": "",
+    "section": "Air quality sites available in the UK",
+    "text": "Air quality sites available in the UK\n\n There a lot of air quality sites available across many networks accessible by openair\n\n\n\nAURN, national and local networks\n‘Local’ networks include the London Air Quality Network, and networks from Sussex, Essex, Kent, North Lincolnshire, …\n\nFor example, in 2023 there are:\n\n373 Urban Traffic sites measuring NO2\n129 ozone sites operational in 2023\n\n\n\n\nThanks to Trevor Davies at Ricardo Energy & Environment"
+  },
+  {
+    "objectID": "IAQM_2023.html#lots-of-pre-calculated-statistics-available",
+    "href": "IAQM_2023.html#lots-of-pre-calculated-statistics-available",
+    "title": "",
+    "section": "Lots of pre-calculated statistics available",
+    "text": "Lots of pre-calculated statistics available\n\n\n\nAnnual, monthly, daily, daily maximum 8-hour, DAQI, … with data capture rates\n\n\n\n\n\n\nannual_aurn <- importAURN(year = 2022, data_type = \"annual\")\nglimpse(annual_aurn)\n\nRows: 170\nColumns: 30\n$ uka_code           <fct> UKA00513, UKA00615, UKA00933, UKA00451, UKA00137, U…\n$ code               <chr> \"ABD7\", \"ABD8\", \"ABD9\", \"ACTH\", \"AH\", \"ARM6\", \"BAAR…\n$ site               <chr> \"Aberdeen Union Street Roadside\", \"Aberdeen Welling…\n$ date               <dttm> 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01, 20…\n$ o3                 <dbl> NA, NA, 53.98682, 61.57285, 65.75499, NA, NA, NA, 5…\n$ o3_capture         <dbl> NA, NA, 0.952511, 0.939155, 0.990753, NA, NA, NA, 0…\n$ o3.summer_capture  <dbl> NA, NA, 0.9975, 0.9419, 0.9898, NA, NA, NA, 0.9957,…\n$ o3.daily.max.8hour <dbl> NA, NA, 67.24956, 71.01198, 74.95352, NA, NA, NA, 6…\n$ o3.aot40v          <int> NA, NA, 924, NA, 3839, NA, NA, NA, 3459, NA, NA, NA…\n$ o3.aot40f          <int> NA, NA, 2529, 4369, 10067, NA, NA, NA, 7543, NA, NA…\n$ somo35             <dbl> NA, NA, 1487.9531, 2248.1085, 3226.5075, NA, NA, NA…\n$ somo35_capture     <dbl> NA, NA, 0.9507, 0.9260, 0.9863, NA, NA, NA, 0.9918,…\n$ no                 <dbl> 19.504377, 19.595931, 6.346165, NA, 0.285401, 20.66…\n$ no_capture         <dbl> 0.993721, 0.997489, 0.995548, NA, 0.970662, 0.98710…\n$ no2                <dbl> 27.019278, 24.222175, 16.259698, NA, 3.197492, 22.1…\n$ no2_capture        <dbl> 0.993721, 0.997489, 0.995548, NA, 0.970662, 0.98710…\n$ nox                <dbl> 56.925572, 54.268851, 25.990348, NA, 3.635102, 53.8…\n$ nox_capture        <dbl> 0.993721, 0.997489, 0.995548, NA, 0.970662, 0.98710…\n$ so2                <dbl> NA, NA, NA, NA, NA, NA, NA, 0.814916, 1.010338, NA,…\n$ so2_capture        <dbl> NA, NA, NA, NA, NA, NA, NA, 0.903767, 0.990297, NA,…\n$ co                 <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ co_capture         <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ pm10               <dbl> NA, NA, 11.25077, 6.22880, NA, 16.43729, NA, NA, NA…\n$ pm10_capture       <dbl> NA, NA, 0.999543, 0.997489, NA, 0.964384, NA, NA, N…\n$ pm2.5              <dbl> NA, NA, 5.952630, 3.847239, NA, NA, NA, NA, NA, NA,…\n$ pm2.5_capture      <dbl> NA, NA, 0.999543, 0.997489, NA, NA, NA, NA, NA, NA,…\n$ gr10               <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ gr10_capture       <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ gr2.5              <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ gr2.5_capture      <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…"
+  },
+  {
+    "objectID": "IAQM_2023.html#openairmaps-for-air-quality-network-information",
+    "href": "IAQM_2023.html#openairmaps-for-air-quality-network-information",
+    "title": "",
+    "section": "\nopenairmaps for air quality network information",
+    "text": "openairmaps for air quality network information\n\n\n\nLook at sites in the AURN, Air Quality England and local networks…\n\n\nnetworkMap(source = c(\"aurn\", \"aqe\", \"local\"), \n           cluster = FALSE)\n\n\n\n\n\n\n\nA big thanks to Dr Jack Davison"
+  },
+  {
+    "objectID": "IAQM_2023.html#openairmaps-for-air-quality-network-information-1",
+    "href": "IAQM_2023.html#openairmaps-for-air-quality-network-information-1",
+    "title": "",
+    "section": "\nopenairmaps for air quality network information",
+    "text": "openairmaps for air quality network information\n\n\n\nLook at sites in the AURN, Air Quality England and local networks…that were open between 2015 and 2023 (useful for trend analysis)\n\n\nnetworkMap(source = c(\"aurn\", \"aqe\", \"local\"), \n           year = 2015:2023,\n           cluster = FALSE)\n\n\n\n\n\n\n\nA big thanks to Dr Jack Davison!"
+  },
+  {
+    "objectID": "IAQM_2023.html#source-apportionment-with-polar-plots",
+    "href": "IAQM_2023.html#source-apportionment-with-polar-plots",
+    "title": "",
+    "section": "Source apportionment with polar plots",
+    "text": "Source apportionment with polar plots\n\nIf we have a whole network of sites, we can triangulate potential sources. For example, where do the highest 10% of concentrations of PM10 come from?\n\n\nPolar plots\nPolar annulus\n\n\n\n\nImport data and manipulate to access meteorological data\nPlot the probability of exceeding the 90th percentile concentration\nChoose a satellite base map\n\n\n\n# get data\nnlincs_local <- importLocal(\n  c(\"SCN6\", \"SC12\", \"SC10\", \"AMVL\"), \n  year = 2021, meta = TRUE\n)\nnlincs_aurn <- importAURN(\n  c(\"SCN2\"), \n  year = 2021, meta = TRUE\n)\n# combine\nnlincs_all <- bind_rows(\n  nlincs_local, nlincs_aurn\n)\n# reuse modelled met for local data\nnlincs_all <-\n  nlincs_all %>%\n  select(-ws, -wd, -air_temp) %>%\n  left_join(\n    select(nlincs_aurn, date, ws:air_temp), \n    by = join_by(date)\n  )\n# polar plot map!\npolarMap(\n  nlincs_all, \"pm10\", alpha = 3 / 4,\n  statistic = \"cpf\", percentile = 90,\n  cols = \"YlGnBu\",\n  provider = \"Esri.WorldImagery\"\n)\n\n\n\n\n\n\n\n\n\n\nHourly variation in PM10 by wind direction\nDifferent base maps\n\n\n\nannulusMap(\n    nlincs_all, \"pm10\", \n    alpha = 3 / 4,\n    # use multiple providers\n    provider = c(\"Stamen.Toner\", \"Esri.WorldImagery\")\n)"
+  },
+  {
+    "objectID": "IAQM_2023.html#source-attribution-with-back-trajectories",
+    "href": "IAQM_2023.html#source-attribution-with-back-trajectories",
+    "title": "",
+    "section": "Source attribution with back trajectories",
+    "text": "Source attribution with back trajectories\n\n\n\n\nInterest is in knowing source origins and contributions\nMost relevant for regional pollutants such as PM2.5 and PM10\n\n\nopenair has a range of back trajectory modelling techniques available\nUse of the NOAA Hysplit model to pre-calculate back trajectories\n\n\nExample for PM2.5 at North Kensignton in London"
+  },
+  {
+    "objectID": "IAQM_2023.html#section-2",
+    "href": "IAQM_2023.html#section-2",
+    "title": "",
+    "section": "",
+    "text": "Deweathering Air Quality Data"
+  },
+  {
+    "objectID": "IAQM_2023.html#dominant-meteorology",
+    "href": "IAQM_2023.html#dominant-meteorology",
+    "title": "",
+    "section": "Dominant meteorology",
+    "text": "Dominant meteorology\n\n\n\nMuch of the time we are happy to analyse data as we find it\nHowever, meteorology can mask or emphasise things we are interested in\n\nTrends affected more by the weather than by changes in emissions\n\n\nDetecting change — is it due to an intervention that affects emissions or by the weather?\n\nMany sophisticated change-point methods but the elephant in the room is often meteorology\nThings would be much easier if the weather was the same every day!\n\n\nExtensions to openair can ‘deweather’ time series of air quality data — now widely used globally with the Covid-19 interest"
+  }
+]
