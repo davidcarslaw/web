@@ -11,6 +11,10 @@ website:
         contents:
           - text: "Exploratory data analysis"
             href: exploratory_data_analysis.qmd
+      - section: "Presentations"
+        contents:
+          - text: "IAQM 2023"
+            href: IAQM_2023.qmd
             
 format:
   html:

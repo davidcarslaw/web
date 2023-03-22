@@ -1,0 +1,290 @@
+---
+format:
+  revealjs: 
+    theme: ["theme/theme.scss"]
+    code-copy: true
+    center-title-slide: false
+    code-link: true
+    code-overflow: wrap
+    code-line-numbers: false
+    highlight-style: a11y
+    height: 1080
+    width: 1920
+    slide-number: c/t
+    preview-links: auto
+    logo: "images/UOY-logo.svg"
+  #  footer: <https://davidcarslaw.github.io/web/IAQM_2023.html>
+execute: 
+  eval: true
+  echo: true
+  message: false
+  warning: false
+  freeze: auto
+---
+
+##  {background-color="white"}
+
+![](images/plume.png){.absolute top="700" left="660" width="600"}
+
+<h1>Recent developments in the openair suite of data analysis packages</h1>
+
+<h2>Measuring Air Quality 2023</h2>
+
+<br>
+
+<p>**David Carslaw**</p>
+
+<p>Department of Chemistry, University of York</p>
+
+<p>Ricardo Energy & Environment</p>
+
+<p>28th March 2023</p>
+
+<br>
+
+::: footer
+<https://davidcarslaw.github.io/web/IAQM_2023.html>
+:::
+
+# Overview
+
+<hr>
+
+<br>
+<br>
+
+<h2>
+1. Accessing UK Air Quality Data
+
+1. Examples of `openair` Functions
+
+1. 'De-weathering' Air Quality Data
+
+</h2>
+
+
+## `openair`
+<hr>
+
+A package of tools developed in open source software called R specifically designed for air quality data analysis
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+* Used extensively worldwide by academia, the public and private sectors
+
+* Many functions covering a wide range of issues
+
+  * Data import from extensive UK networks
+  * Directional analysis
+  * Source attribution
+  * Back trajectories
+  * Model evaluation
+  * Utility functions
+
+* Over 400,000 downloads
+
+* Sister packages: `{openairmaps}`, `{worldmet}` and `deweather`
+:::
+
+::: {.column width="60%"}
+<br>
+[![](images/openair_book.png)](https://bookdown.org/david_carslaw/openair/)
+
+:::
+
+::::
+
+
+##  {background="#43464B"}
+<h1>Accessing UK Air Quality Data</h1>
+
+## Air quality sites available in the UK
+
+<hr>
+<br>
+There *a lot* of air quality sites available across many networks accessible by `openair`
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+* AURN, national and local networks
+
+* 'Local' networks include the London Air Quality Network, and networks from Sussex, Essex, Kent, North Lincolnshire, ...
+
+* For example, in 2023 there are:
+  * **373** Urban Traffic sites measuring NO~2~
+
+  * 129 ozone sites operational in 2023
+
+
+::: footer
+Thanks to Trevor Davies at Ricardo Energy & Environment
+:::
+
+:::
+
+::: {.column width="60%"}
+<br>
+![](images/uk_sites.png){.absolute top="220" left="800" width="1200"}
+
+:::
+
+::::
+
+## Lots of pre-calculated statistics available
+
+
+<hr>
+<br>
+
+> Annual, monthly, daily, daily maximum 8-hour, DAQI, ... with data capture rates
+
+<br>
+
+```{r}
+#| echo: false
+library(openair)
+library(openairmaps)
+library(tidyverse)
+```
+
+```{r}
+annual_aurn <- importAURN(year = 2022, data_type = "annual")
+glimpse(annual_aurn)
+```
+
+## `openairmaps` for air quality network information
+
+<hr>
+
+<br>
+
+> Look at sites in the AURN, Air Quality England and local networks...
+
+
+```{r}
+#| label: londonannulus
+#| out-width: "100%"
+#| out-height: "700"
+networkMap(source = c("aurn", "aqe", "local"), 
+           cluster = FALSE)
+```
+
+::: footer
+A big thanks to Dr Jack Davison
+:::
+
+## `openairmaps` for air quality network information
+
+<hr>
+
+<br>
+
+> Look at sites in the AURN, Air Quality England and local networks...**that were open between 2015 and 2023** (useful for trend analysis)
+
+
+```{r}
+#| out-width: "100%"
+#| out-height: "700"
+#| code-line-numbers: "2"
+networkMap(source = c("aurn", "aqe", "local"), 
+           year = 2015:2023,
+           cluster = FALSE)
+```
+
+::: footer
+A big thanks to [Dr Jack Davison](https://github.com/jack-davison)!
+:::
+
+## Source apportionment with polar plots
+<hr>
+
+If we have a whole network of sites, we can triangulate potential sources. For example, where do the highest 10% of concentrations of PM~10~ come from?
+
+::: panel-tabset
+
+### Polar plots
+
+* Import data and manipulate to access meteorological data
+* Plot the probability of exceeding the 90th percentile concentration
+* Choose a satellite base map
+
+```{r}
+#| label: nlincs
+#| output-location: column
+#| out-width: "100%"
+#| out-height: "550"
+
+# get data
+nlincs_local <- importLocal(
+  c("SCN6", "SC12", "SC10", "AMVL"), 
+  year = 2021, meta = TRUE
+)
+nlincs_aurn <- importAURN(
+  c("SCN2"), 
+  year = 2021, meta = TRUE
+)
+# combine
+nlincs_all <- bind_rows(
+  nlincs_local, nlincs_aurn
+)
+# reuse modelled met for local data
+nlincs_all <-
+  nlincs_all %>%
+  select(-ws, -wd, -air_temp) %>%
+  left_join(
+    select(nlincs_aurn, date, ws:air_temp), 
+    by = join_by(date)
+  )
+# polar plot map!
+polarMap(
+  nlincs_all, "pm10", alpha = 3 / 4,
+  statistic = "cpf", percentile = 90,
+  cols = "YlGnBu",
+  provider = "Esri.WorldImagery"
+)
+```
+
+### Polar annulus
+
+* Hourly variation in PM~10~ by wind direction
+* Different base maps
+
+```{r}
+#| output-location: column
+#| out-width: "100%"
+#| out-height: "550"
+
+
+annulusMap(
+    nlincs_all, "pm10", 
+    alpha = 3 / 4,
+    cols = "YlGnBu",
+    # use multiple providers
+    provider = c("Stamen.Toner", "Esri.WorldImagery")
+)
+```
+
+:::
+
+## Source attribution with back trajectories
+
+<hr>
+
+::: columns
+::: {.column width="35%"}
+-   Interest is in knowing source origins and contributions
+-   Most relevant for regional pollutants such as PM~2.5~ and PM~10~
+-   `openair` has a range of back trajectory modelling techniques available
+-   Use of the NOAA Hysplit model to pre-calculate back trajectories
+
+> Example for PM~2.5~ at North Kensignton in London
+:::
+
+::: {.column width="65%"}
+![](images/SQTBA.png) 
+:::
+:::
