@@ -50,94 +50,83 @@ execute:
 
 <hr>
 
-<br>
-<br>
+<br> <br>
 
 <h2>
-1. Accessing UK Air Quality Data
 
-1. Examples of `openair` Functions
+1.  Accessing UK Air Quality Data
 
-1. 'De-weathering' Air Quality Data
+2.  Examples of `openair` Functions
+
+3.  'De-weathering' Air Quality Data
 
 </h2>
 
-
 ## `openair`
+
 <hr>
 
 A package of tools developed in open source software called R specifically designed for air quality data analysis
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="40%"}
+-   Used extensively worldwide by academia, the public and private sectors
 
-* Used extensively worldwide by academia, the public and private sectors
+-   Many functions covering a wide range of issues
 
-* Many functions covering a wide range of issues
+    -   Data import from extensive UK networks
+    -   Directional analysis
+    -   Source attribution
+    -   Back trajectories
+    -   Model evaluation
+    -   Utility functions
 
-  * Data import from extensive UK networks
-  * Directional analysis
-  * Source attribution
-  * Back trajectories
-  * Model evaluation
-  * Utility functions
+-   Over 400,000 downloads
 
-* Over 400,000 downloads
-
-* Sister packages: `{openairmaps}`, `{worldmet}` and `deweather`
+-   Sister packages: `{openairmaps}`, `{worldmet}` and `deweather`
 :::
 
 ::: {.column width="60%"}
-<br>
-[![](images/openair_book.png)](https://bookdown.org/david_carslaw/openair/)
-
+<br> [![](images/openair_book.png)](https://bookdown.org/david_carslaw/openair/)
+:::
 :::
 
-::::
-
-
 ##  {background="#43464B"}
+
 <h1>Accessing UK Air Quality Data</h1>
 
 ## Air quality sites available in the UK
 
 <hr>
-<br>
-There *a lot* of air quality sites available across many networks accessible by `openair`
 
-:::: {.columns}
+<br> There **a lot** of air quality sites available across many networks accessible by `openair`
 
+::: columns
 ::: {.column width="40%"}
+-   AURN, national and local networks
 
-* AURN, national and local networks
+-   'Local' networks include the London Air Quality Network, and networks from Sussex, Essex, Kent, North Lincolnshire, ...
 
-* 'Local' networks include the London Air Quality Network, and networks from Sussex, Essex, Kent, North Lincolnshire, ...
+-   For example, in 2023 there are:
 
-* For example, in 2023 there are:
-  * **373** Urban Traffic sites measuring NO~2~
+    -   **373** Urban Traffic sites measuring NO~2~
 
-  * 129 ozone sites operational in 2023
-
+    -   129 ozone sites operational in 2023
 
 ::: footer
 Thanks to Trevor Davies at Ricardo Energy & Environment
 :::
-
 :::
 
 ::: {.column width="60%"}
-<br>
-![](images/uk_sites.png){.absolute top="220" left="800" width="1200"}
-
+<br> ![](images/uk_sites.png){.absolute top="220" left="800" width="1200"}
 :::
-
-::::
+:::
 
 ## Lots of pre-calculated statistics available
 
-
 <hr>
+
 <br>
 
 > Annual, monthly, daily, daily maximum 8-hour, DAQI, ... with data capture rates
@@ -164,7 +153,6 @@ glimpse(annual_aurn)
 
 > Look at sites in the AURN, Air Quality England and local networks...
 
-
 ```{r}
 #| label: londonannulus
 #| out-width: "100%"
@@ -185,7 +173,6 @@ A big thanks to Dr Jack Davison
 
 > Look at sites in the AURN, Air Quality England and local networks...**that were open between 2015 and 2023** (useful for trend analysis)
 
-
 ```{r}
 #| out-width: "100%"
 #| out-height: "700"
@@ -200,17 +187,17 @@ A big thanks to [Dr Jack Davison](https://github.com/jack-davison)!
 :::
 
 ## Source apportionment with polar plots
+
 <hr>
 
 If we have a whole network of sites, we can triangulate potential sources. For example, where do the highest 10% of concentrations of PM~10~ come from?
 
 ::: panel-tabset
-
 ### Polar plots
 
-* Import data and manipulate to access meteorological data
-* Plot the probability of exceeding the 90th percentile concentration
-* Choose a satellite base map
+-   Import data and manipulate to access meteorological data
+-   Plot the probability of exceeding the 90th percentile concentration
+-   Choose a satellite base map
 
 ```{r}
 #| label: nlincs
@@ -250,8 +237,8 @@ polarMap(
 
 ### Polar annulus
 
-* Hourly variation in PM~10~ by wind direction
-* Different base maps
+-   Hourly variation in PM~10~ by wind direction
+-   Different base maps
 
 ```{r}
 #| output-location: column
@@ -262,12 +249,10 @@ polarMap(
 annulusMap(
     nlincs_all, "pm10", 
     alpha = 3 / 4,
-    cols = "YlGnBu",
     # use multiple providers
     provider = c("Stamen.Toner", "Esri.WorldImagery")
 )
 ```
-
 :::
 
 ## Source attribution with back trajectories
@@ -285,6 +270,23 @@ annulusMap(
 :::
 
 ::: {.column width="65%"}
-![](images/SQTBA.png) 
+![](images/SQTBA.png)
 :::
 :::
+
+##  {background="#43464B"}
+
+<h1>Deweathering Air Quality Data</h1>
+
+## Dominant meteorology
+
+<hr>
+<br>
+
+- Much of the time we are happy to analyse data as we find it 
+- However, meteorology can mask or emphasise things we are interested in 
+  - Trends affected more by the weather than by changes in emissions
+- Detecting change --- is it due to an intervention that affects emissions or by the weather?
+  - Many sophisticated change-point methods but the elephant in the room is often meteorology
+  - Things would be much easier if the weather was the same every day!
+- Extensions to `{openair}` can 'deweather' time series of air quality data --- now widely used globally with the Covid-19 interest
