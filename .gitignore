@@ -6,3 +6,4 @@
 /_site/
 *.html
 _freeze
+.DS_Store
