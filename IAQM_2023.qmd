@@ -12,7 +12,7 @@ format:
     width: 1920
     slide-number: c/t
     preview-links: auto
-    logo: "images/UOY-logo.svg"
+   # logo: "images/UOY-logo.svg"
   #  footer: <https://davidcarslaw.github.io/web/IAQM_2023.html>
 execute: 
   eval: true
@@ -24,7 +24,7 @@ execute:
 
 ##  {background-color="white"}
 
-![](images/plume.png){.absolute top="700" left="660" width="600"}
+![](images/plume.png){.absolute top="550" left="660" width="500"}
 
 <h1>Recent developments in the openair suite of data analysis packages</h1>
 
@@ -39,8 +39,6 @@ execute:
 <p>Ricardo Energy & Environment</p>
 
 <p>28th March 2023</p>
-
-<br>
 
 ::: footer
 <https://davidcarslaw.github.io/web/IAQM_2023.html>
@@ -201,6 +199,7 @@ If we have a whole network of sites, we can triangulate potential sources. For e
 
 ```{r}
 #| label: nlincs
+#| cache: true
 #| output-location: column
 #| out-width: "100%"
 #| out-height: "550"
