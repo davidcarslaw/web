@@ -280,12 +280,30 @@ annulusMap(
 ## Dominant meteorology
 
 <hr>
+
 <br>
 
-- Much of the time we are happy to analyse data as we find it 
-- However, meteorology can mask or emphasise things we are interested in 
-  - Trends affected more by the weather than by changes in emissions
-- Detecting change --- is it due to an intervention that affects emissions or by the weather?
-  - Many sophisticated change-point methods but the elephant in the room is often meteorology
-  - Things would be much easier if the weather was the same every day!
-- Extensions to `{openair}` can 'deweather' time series of air quality data --- now widely used globally with the Covid-19 interest
+-   Much of the time we are happy to analyse data as we find it
+-   However, meteorology can mask or emphasise things we are interested in
+    -   Trends affected more by the weather than by changes in emissions
+-   Detecting change --- is it due to an intervention that affects emissions or by the weather?
+    -   Many sophisticated change-point methods but the elephant in the room is often meteorology
+    -   Things would be much easier if the weather was the same every day!
+-   Extensions to `{openair}` can 'deweather' time series of air quality data --- now widely used globally with the Covid-19 interest
+
+# A good vintage! {background="#43464B" background-image="images/Wine-Vintage.jpeg"}
+
+<br>
+
+::: columns
+::: {.column width="35%"}
+
+::: {.incremental}
+-   We tend to describe years as being "good" or "bad" for air quality; like wine!
+
+- Important to know whether things have improved (or got worse) because of the weather or emissions
+
+- A more quantitative approach is required ...
+:::
+:::
+:::
