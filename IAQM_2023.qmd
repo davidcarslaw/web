@@ -299,11 +299,14 @@ annulusMap(
 ::: {.column width="35%"}
 
 ::: {.incremental}
--   We tend to describe years as being "good" or "bad" for air quality; like wine!
 
-- Important to know whether things have improved (or got worse) because of the weather or emissions
+-   <font size="+10">We tend to describe years as being "good" or "bad" for air quality; like wine!</font>
 
-- A more quantitative approach is required ...
+- <font size="+10">Important to know whether things have improved (or got worse) because of the weather or emissions</font>
+
+- <font size="+10">A more quantitative approach is required ...</font>
+
+
 :::
 :::
 :::
