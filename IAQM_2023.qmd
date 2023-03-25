@@ -44,9 +44,7 @@ execute:
 <https://davidcarslaw.github.io/web/IAQM_2023.html>
 :::
 
-# Overview
-
-<hr>
+# Overview {background="#43464B" background-image="images/Mill-chimneys.jpg"}
 
 <br> <br>
 
@@ -175,6 +173,7 @@ A big thanks to Dr Jack Davison
 #| out-width: "100%"
 #| out-height: "700"
 #| code-line-numbers: "2"
+#| cache: true
 networkMap(source = c("aurn", "aqe", "local"), 
            year = 2015:2023,
            cluster = FALSE)
@@ -182,6 +181,47 @@ networkMap(source = c("aurn", "aqe", "local"),
 
 ::: footer
 A big thanks to [Dr Jack Davison](https://github.com/jack-davison)!
+:::
+
+## Polar plots
+
+<hr>
+
+::: columns
+::: {.column width="40%"}
+-   Useful for local source attribution
+
+-   Just considering concentration by wind direction only tells us about the direction of major sources
+
+-   Considering the joint wind speed-direction variation says much more about the **nature** of the emission sources
+
+![](images/stability_plume.png)
+:::
+
+::: {.column width="60%"}
+```{r}
+#| fig-width: 4.5
+#| fig-height: 4
+#| out-width: 20%
+#| layout-ncol: 2
+#| echo: false
+#| cache: true
+load("~/My Drive/Research/polarCPF/Scunthorpe 2009.RData") 
+scun$lat <- 53.58634
+scun$lon <- -0.636811
+
+percentileRose(scun, method = "cpf", percentile = 75,
+               pollutant = "nox", col = "grey30", smooth = TRUE)
+
+polarPlot(scun, pollutant = "nox")
+
+percentileRose(scun, method = "cpf", percentile = 75,
+               pollutant = "so2", col = "grey30", smooth = TRUE)
+
+
+polarPlot(scun, pollutant = "so2")
+```
+:::
 :::
 
 ## Source apportionment with polar plots
@@ -254,6 +294,50 @@ annulusMap(
 ```
 :::
 
+## Tracking changes in sources
+
+<hr>
+
+-   Polar plots can be very useful for tracking changes in different source contributions
+
+-   In this case the **difference** in concentrations of SO~2~ and PM~10~ are considered between the periods 2010/2011 and 2020/2021
+
+::: columns
+::: {.column width="47%"}
+**SO~2~**
+
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 4
+#| fig-keep: 'last'
+#| out-width: "80%"
+#| cache: true
+library(openair)
+scun_aurn <- read_rds("scun_aurn_2010_2021.rds")
+polarDiff(selectByDate(scun_aurn, year = 2010:2011), 
+          selectByDate(scun_aurn, year = 2020:2021), 
+          pollutant = "so2", limits = c(-35, 35))
+
+```
+:::
+
+::: {#vcenter .column width="47%"}
+**PM~10~**
+
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 4
+#| fig-keep: 'last'
+#| out-width: "80%"
+polarDiff(selectByDate(scun_aurn, year = 2010:2011), 
+          selectByDate(scun_aurn, year = 2020:2021), 
+          pollutant = "pm10")
+```
+:::
+:::
+
 ## Source attribution with back trajectories
 
 <hr>
@@ -310,3 +394,17 @@ annulusMap(
 :::
 :::
 :::
+
+## Useful links
+
+-   Read more about `openair` in the on-line book <https://bookdown.org/david_carslaw/openair/>
+
+-   Browse the source code on GitHub at <https://github.com/davidcarslaw/openair>
+
+-   Published papers on polar plots:
+
+    -   Grange, Stuart K, Alastair C Lewis, and David C Carslaw. 2016."Source Apportionment Advances Using Polar Plots of Bivariate Correlation and Regression Statistics."*Atmospheric Environment* 145: 128--34.
+
+    -   Uria-Tellaetxe, I, and D. C. Carslaw. 2014."Conditional Bivariate Probability Function for Source Identification."*Environmental Modelling & Software* 59: 1--9. <https://doi.org/10.1016/j.envsoft.2014.05.002>.
+
+    -   Carslaw, D. C., and S. D. Beevers. 2013. "Characterising and Understanding Emission Sources Using Bivariate Polar Plots and k-Means Clustering."*Environmental Modelling & Software* 40 (0): 325--29. <https://doi.org/10.1016/j.envsoft.2012.09.005>.
