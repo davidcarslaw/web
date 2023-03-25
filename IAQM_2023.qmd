@@ -147,7 +147,7 @@ glimpse(annual_aurn)
 
 <br>
 
-> Look at sites in the AURN, Air Quality England and local networks...
+Look at sites in the AURN, Air Quality England and local networks...
 
 ```{r}
 #| label: londonannulus
@@ -167,16 +167,15 @@ A big thanks to Dr Jack Davison
 
 <br>
 
-> Look at sites in the AURN, Air Quality England and local networks...**that were open between 2015 and 2023** (useful for trend analysis)
+Look at sites in the AURN, Air Quality England and local networks...**that were open between 2015 and 2023** (useful for trend analysis)
 
 ```{r}
 #| out-width: "100%"
 #| out-height: "700"
 #| code-line-numbers: "2"
 #| cache: true
-networkMap(source = c("aurn", "aqe", "local"), 
-           year = 2015:2023,
-           cluster = FALSE)
+networkMap(source = c("aurn", "aqe", "local"), cluster = FALSE,
+           year = 2015:2023)
 ```
 
 ::: footer
@@ -213,13 +212,13 @@ scun$lon <- -0.636811
 percentileRose(scun, method = "cpf", percentile = 75,
                pollutant = "nox", col = "grey30", smooth = TRUE)
 
-polarPlot(scun, pollutant = "nox")
+polarPlot(scun, pollutant = "nox", cols = "YlGnBu")
 
 percentileRose(scun, method = "cpf", percentile = 75,
                pollutant = "so2", col = "grey30", smooth = TRUE)
 
 
-polarPlot(scun, pollutant = "so2")
+polarPlot(scun, pollutant = "so2", cols = "YlGnBu")
 ```
 :::
 :::
