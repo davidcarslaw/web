@@ -389,7 +389,7 @@ polarDiff(selectByDate(scun_aurn, year = 2010:2011),
 :::
 :::
 
-## Useful links
+## Further information
 
 -   Read more about `openair` in the on-line book <https://bookdown.org/david_carslaw/openair/>
 
