@@ -26,7 +26,7 @@ execute:
 
 ![](images/plume.png){.absolute top="550" left="660" width="500"}
 
-<h1>Recent developments in the openair suite of data analysis packages</h1>
+<h1>Recent developments in the `openair` suite of data analysis packages</h1>
 
 <h2>Measuring Air Quality 2023</h2>
 
@@ -97,7 +97,7 @@ A package of tools developed in open source software called R specifically desig
 
 <hr>
 
-<br> There **a lot** of air quality sites available across many networks accessible by `openair`
+<br> There **a lot** of air quality sites available across many networks accessible by `{openair}`
 
 ::: columns
 ::: {.column width="40%"}
@@ -262,7 +262,7 @@ annulusMap(
 ::: {.column width="35%"}
 -   Interest is in knowing source origins and contributions
 -   Most relevant for regional pollutants such as PM~2.5~ and PM~10~
--   `openair` has a range of back trajectory modelling techniques available
+-   `{openair}` has a range of back trajectory modelling techniques available
 -   Use of the NOAA Hysplit model to pre-calculate back trajectories
 
 > Example for PM~2.5~ at North Kensignton in London
@@ -300,7 +300,7 @@ annulusMap(
 
 ::: {.incremental}
 
--   <font size="+10">We tend to describe years as being "good" or "bad" for air quality; like wine!</font>
+-   <font size="+10">We tend to describe air quality in terms of "good" or "bad" years; like wine!</font>
 
 - <font size="+10">Important to know whether things have improved (or got worse) because of the weather or emissions</font>
 
