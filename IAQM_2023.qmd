@@ -403,6 +403,6 @@ polarDiff(selectByDate(scun_aurn, year = 2010:2011),
 
     -   Carslaw, D. C., and S. D. Beevers. 2013. "Characterising and Understanding Emission Sources Using Bivariate Polar Plots and k-Means Clustering."*Environmental Modelling & Software* 40 (0): 325--29. <https://doi.org/10.1016/j.envsoft.2012.09.005>.
 
-    -   Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to detect interventions in air quality time series', Science of The Total Environment. 653, pp. 578--588. <https://doi.org/10.1016/j.scitotenv.2018.10.344>.
+    -   Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to detect interventions in air quality time series', *Science of The Total Environment*. 653, pp. 578--588. <https://doi.org/10.1016/j.scitotenv.2018.10.344>.
 
-    -   Grange, S. K., Lee, J. D., Drysdale, W. S., Lewis, A. C., Hueglin, C., Emmenegger, L. and D. C. Carslaw, (2021). COVID-19 lockdowns highlight a risk of increasing ozone pollution in European urban areas. Atmospheric Chemistry and Physics, 21, 4169--4185, <https://doi.org/10.5194/acp-21-4169-2021>.
+    -   Grange, S. K., Lee, J. D., Drysdale, W. S., Lewis, A. C., Hueglin, C., Emmenegger, L. and D. C. Carslaw, (2021). COVID-19 lockdowns highlight a risk of increasing ozone pollution in European urban areas. *Atmospheric Chemistry and Physics*, 21, 4169--4185, <https://doi.org/10.5194/acp-21-4169-2021>.
