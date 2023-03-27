@@ -472,6 +472,18 @@ Fuel quality changes detected in SO~2~ concentrations
 :::
 :::
 
+#
+
+::: {style="font-size:100px"}
+Thank you for your attention
+:::
+
+<br>
+
+::: {style="font-size:50px"}
+David Carslaw (david.carslaw@york.ac.uk, david.carslaw@ricardo.com)
+:::
+
 ## Further information
 
 -   Read more about `openair` in the on-line book <https://bookdown.org/david_carslaw/openair/>
