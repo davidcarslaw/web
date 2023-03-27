@@ -62,7 +62,7 @@ execute:
 
 <hr>
 
-A package of tools developed in open source software called R specifically designed for air quality data analysis
+A package of tools developed in open-source software called R specifically designed for air quality data analysis
 
 ::: columns
 ::: {.column width="40%"}
@@ -425,7 +425,7 @@ Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to d
 <br>
 
 ::: {style="font-size:60px"}
-Question: What would the 2019 NO~2~ concentration at the Camden Roadside site be it experienced weather conditions of other years?
+Question: What would the 2019 NO~2~ concentration at the Camden Roadside site be if it experienced weather conditions of other years?
 :::
 
 ::: columns
@@ -484,11 +484,13 @@ Thank you for your attention
 David Carslaw (david.carslaw@york.ac.uk, david.carslaw@ricardo.com)
 :::
 
-## Further information
+## Further information {.smaller}
 
 -   Read more about `openair` in the on-line book <https://bookdown.org/david_carslaw/openair/>
 
 -   Browse the source code on GitHub at <https://github.com/davidcarslaw/openair>
+
+- This presentation <https://davidcarslaw.github.io/web/IAQM_2023.html>
 
 -   Published papers on polar plots and deweathering:
 
