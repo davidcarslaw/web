@@ -115,7 +115,7 @@ Thanks to Trevor Davies at Ricardo Energy & Environment
 :::
 
 ::: {.column width="60%"}
-<br> ![](images/uk_sites.png){.absolute top="220" left="800" width="1200"}
+<br> ![](images/uk_sites.svg){.absolute top="220" left="800" width="1200"}
 :::
 :::
 
