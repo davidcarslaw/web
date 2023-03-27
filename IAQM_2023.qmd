@@ -95,7 +95,7 @@ A package of tools developed in open-source software called R specifically desig
 
 <hr>
 
-<br> There **a lot** of air quality sites available across many networks accessible by `{openair}`
+<br> There are **a lot** of air quality sites available across many networks accessible by `{openair}`
 
 ::: columns
 ::: {.column width="40%"}
