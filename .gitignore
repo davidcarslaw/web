@@ -5,6 +5,7 @@
 /.quarto/
 /_site/
 *_cache/
+*_files/
 *.html
 _freeze
 .DS_Store
