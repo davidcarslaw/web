@@ -24,7 +24,7 @@ execute:
 
 ##  {background-color="white"}
 
-![](images/plume.png){.absolute top="550" left="660" width="500"}
+![](images/plume.png){.absolute bottom="50" left="660" width="400"}
 
 <h1>Recent developments in the `openair` suite of data analysis packages</h1>
 
@@ -158,7 +158,7 @@ networkMap(source = c("aurn", "aqe", "local"),
 ```
 
 ::: footer
-A big thanks to Dr Jack Davison
+A big thanks to [Dr Jack Davison](https://github.com/jack-davison)!
 :::
 
 ## `openairmaps` for air quality network information
@@ -365,13 +365,39 @@ polarDiff(selectByDate(scun_aurn, year = 2010:2011),
 
 <br>
 
--   Much of the time we are happy to analyse data as we find it
--   However, meteorology can mask or emphasise things we are interested in
-    -   Trends affected more by the weather than by changes in emissions
+::: {style="font-size:60px"}
+Things would be much easier if the weather was the same every day!
+:::
+
+<br>
+
+::: footer
+Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to detect interventions in air quality time series', *Science of The Total Environment*. 653, pp. 578--588. <https://doi.org/10.1016/j.scitotenv.2018.10.344>.
+:::
+
+::: columns
+::: {.column width="45%"}
+
+-   Meteorology can mask or emphasise trends
+    -   Trends often affected more by the weather than by changes in emissions
 -   Detecting change --- is it due to an intervention that affects emissions or by the weather?
-    -   Many sophisticated change-point methods but the elephant in the room is often meteorology
-    -   Things would be much easier if the weather was the same every day!
--   Extensions to `{openair}` can 'deweather' time series of air quality data --- now widely used globally with the Covid-19 interest
+- Many sophisticated change-point methods but the elephant in the room is often meteorology
+-   Extensions to `{openair}` and the `{rmweather}` package can 'deweather' time series of air quality data --- now widely used globally with the Covid-19 interest 
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="35%"}
+[![](images/rmweather.png)](https://github.com/skgrange/rmweather)
+:::
+
+::: {.column width="10%"}
+:::
+
+:::
+
 
 # A good vintage! {background="#43464B" background-image="images/Wine-Vintage.jpeg"}
 
@@ -380,12 +406,69 @@ polarDiff(selectByDate(scun_aurn, year = 2010:2011),
 ::: columns
 ::: {.column width="35%"}
 ::: incremental
--   <font size="+10">We tend to describe air quality in terms of "good" or "bad" years; like wine!</font>
 
--   <font size="+10">Important to know whether things have improved (or got worse) because of the weather or emissions</font>
+::: {style="font-size:50px"}
 
--   <font size="+10">A more quantitative approach is required ...</font>
+-   We tend to describe air quality in terms of "good" or "bad" years; like wine!
+
+-   Important to know whether things have improved (or got worse) because of the weather or emissions
+
+-   A more quantitative approach is required ...
 :::
+:::
+:::
+:::
+
+## Example at Camden roadside site
+
+<hr>
+<br>
+
+::: {style="font-size:60px"}
+Question: What would the 2019 NO~2~ concentration at the Camden Roadside site be it experienced weather conditions of other years?
+:::
+
+::: columns
+::: {.column width="40%"}
+
+- Build model for 2019 to explain NO~2~ concentrations using measured meteorological data
+- Predict NO~2~ concentrations based on other meteorological years
+- Rank the predictions
+- NO~2~ varies from 39 to 45 μg m^-3^ (2019 was 43 μg m^-3^)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+![](images/weather-year-cropped.svg)
+:::
+:::
+
+## Example at the Port of Dover
+
+<hr>
+<br>
+
+::: {style="font-size:60px"}
+Fuel quality changes detected in SO~2~ concentrations
+:::
+
+<br>
+
+::: columns
+
+::: {.column width="50%"}
+- Difficult to see changes in SO~2~ in raw data
+
+![](images/dover_raw.png)
+:::
+
+::: {.column width="50%"}
+
+- Deweathered data much clearer and can be linked to **known** changes in fuel sulphur content
+
+![](images/dover_so2_normalised_with_ribbons.svg)
 :::
 :::
 
