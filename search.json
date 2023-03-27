@@ -214,7 +214,7 @@
     "href": "IAQM_2023.html#openairmaps-for-air-quality-network-information",
     "title": "",
     "section": "\nopenairmaps for air quality network information",
-    "text": "openairmaps for air quality network information\n\n\nLook at sites in the AURN, Air Quality England and local networks…\n\nnetworkMap(source = c(\"aurn\", \"aqe\", \"local\"), \n           cluster = FALSE)\n\n\n\n\n\n\n\nA big thanks to Dr Jack Davison"
+    "text": "openairmaps for air quality network information\n\n\nLook at sites in the AURN, Air Quality England and local networks…\n\nnetworkMap(source = c(\"aurn\", \"aqe\", \"local\"), \n           cluster = FALSE)\n\n\n\n\n\n\n\nA big thanks to Dr Jack Davison!"
   },
   {
     "objectID": "IAQM_2023.html#openairmaps-for-air-quality-network-information-1",
@@ -235,7 +235,7 @@
     "href": "IAQM_2023.html#source-apportionment-with-polar-plots",
     "title": "",
     "section": "Source apportionment with polar plots",
-    "text": "Source apportionment with polar plots\n\nIf we have a whole network of sites, we can triangulate potential sources. For example, where do the highest 10% of concentrations of PM10 come from?\n\n\nPolar plots\nPolar annulus\n\n\n\n\nImport data and manipulate to access meteorological data\nPlot the probability of exceeding the 90th percentile concentration\nChoose a satellite base map\n\n\n\n# get data\nnlincs_local &lt;- importLocal(\n  c(\"SCN6\", \"SC12\", \"SC10\", \"AMVL\"), \n  year = 2021, meta = TRUE\n)\nnlincs_aurn &lt;- importAURN(\n  c(\"SCN2\"), \n  year = 2021, meta = TRUE\n)\n# combine\nnlincs_all &lt;- bind_rows(\n  nlincs_local, nlincs_aurn\n)\n# reuse modelled met for local data\nnlincs_all &lt;-\n  nlincs_all %&gt;%\n  select(-ws, -wd, -air_temp) %&gt;%\n  left_join(\n    select(nlincs_aurn, date, ws:air_temp), \n    by = join_by(date)\n  )\n# polar plot map!\npolarMap(\n  nlincs_all, \"pm10\", alpha = 3 / 4,\n  statistic = \"cpf\", percentile = 90,\n  cols = \"YlGnBu\",\n  provider = \"Esri.WorldImagery\"\n)\n\n\n\n\n\n\n\n\n\n\nHourly variation in PM10 by wind direction\nDifferent base maps\n\n\n\nannulusMap(\n    nlincs_all, \"pm10\", \n    alpha = 3 / 4,\n    # use multiple providers\n    provider = c(\"Stamen.Toner\", \"Esri.WorldImagery\")\n)"
+    "text": "Source apportionment with polar plots\n\nIf we have a whole network of sites, we can triangulate potential sources. For example, where do the highest 10% of concentrations of PM10 come from?\n\n\nPolar plots\nPolar annulus\n\n\n\n\nImport data and manipulate to access meteorological data\nPlot the probability of exceeding the 90th percentile concentration with satellite base map\n\n\n\n# get data\nnlincs_local &lt;- importLocal(\n  c(\"SCN6\", \"SC12\", \"SC10\", \"AMVL\"), \n  year = 2021, meta = TRUE\n)\nnlincs_aurn &lt;- importAURN(\n  c(\"SCN2\"), \n  year = 2021, meta = TRUE\n)\n# combine\nnlincs_all &lt;- bind_rows(\n  nlincs_local, nlincs_aurn\n)\n# reuse modelled met for local data\nnlincs_all &lt;-\n  nlincs_all %&gt;%\n  select(-ws, -wd, -air_temp) %&gt;%\n  left_join(\n    select(nlincs_aurn, date, ws:air_temp), \n    by = join_by(date)\n  )\n# polar plot map!\npolarMap(\n  nlincs_all, \"pm10\", alpha = 3 / 4,\n  statistic = \"cpf\", percentile = 90,\n  cols = \"YlGnBu\",\n  provider = \"Esri.WorldImagery\"\n)\n\n\n\n\n\n\n\n\n\n\nHourly variation in PM10 by wind direction\nDifferent base maps\n\n\n\nannulusMap(\n    nlincs_all, \"pm10\", \n    alpha = 3 / 4,\n    # use multiple providers\n    provider = c(\"Stamen.Toner\", \"Esri.WorldImagery\")\n)"
   },
   {
     "objectID": "IAQM_2023.html#tracking-changes-in-sources",
@@ -263,13 +263,27 @@
     "href": "IAQM_2023.html#dominant-meteorology",
     "title": "",
     "section": "Dominant meteorology",
-    "text": "Dominant meteorology\n\n\n\nMuch of the time we are happy to analyse data as we find it\nHowever, meteorology can mask or emphasise things we are interested in\n\nTrends affected more by the weather than by changes in emissions\n\n\nDetecting change — is it due to an intervention that affects emissions or by the weather?\n\nMany sophisticated change-point methods but the elephant in the room is often meteorology\nThings would be much easier if the weather was the same every day!\n\n\nExtensions to openair can ‘deweather’ time series of air quality data — now widely used globally with the Covid-19 interest"
+    "text": "Dominant meteorology\n\n\n\nThings would be much easier if the weather was the same every day!\n\n\n\nGrange, S. K. and Carslaw, D. C. (2019) ‘Using meteorological normalisation to detect interventions in air quality time series’, Science of The Total Environment. 653, pp. 578–588. https://doi.org/10.1016/j.scitotenv.2018.10.344.\n\n\n\n\nMeteorology can mask or emphasise trends\n\nTrends often affected more by the weather than by changes in emissions\n\n\nDetecting change — is it due to an intervention that affects emissions or by the weather?\nMany sophisticated change-point methods but the elephant in the room is often meteorology\nExtensions to openair and the rmweather package can ‘deweather’ time series of air quality data — now widely used globally with the Covid-19 interest"
   },
   {
-    "objectID": "IAQM_2023.html#useful-links",
-    "href": "IAQM_2023.html#useful-links",
+    "objectID": "IAQM_2023.html#example-at-camden-roadside-site",
+    "href": "IAQM_2023.html#example-at-camden-roadside-site",
     "title": "",
-    "section": "Useful links",
-    "text": "Useful links\n\nRead more about openair in the on-line book https://bookdown.org/david_carslaw/openair/\nBrowse the source code on GitHub at https://github.com/davidcarslaw/openair\n\nPublished papers on polar plots and deweathering:\n\nGrange, Stuart K, Alastair C Lewis, and David C Carslaw. 2016.”Source Apportionment Advances Using Polar Plots of Bivariate Correlation and Regression Statistics.”Atmospheric Environment 145: 128–34.\nUria-Tellaetxe, I, and D. C. Carslaw. 2014.”Conditional Bivariate Probability Function for Source Identification.”Environmental Modelling & Software 59: 1–9. https://doi.org/10.1016/j.envsoft.2014.05.002.\nCarslaw, D. C., and S. D. Beevers. 2013. “Characterising and Understanding Emission Sources Using Bivariate Polar Plots and k-Means Clustering.”Environmental Modelling & Software 40 (0): 325–29. https://doi.org/10.1016/j.envsoft.2012.09.005.\nGrange, S. K. and Carslaw, D. C. (2019) ‘Using meteorological normalisation to detect interventions in air quality time series’, Science of The Total Environment. 653, pp. 578–588. https://doi.org/10.1016/j.scitotenv.2018.10.344.\nGrange, S. K., Lee, J. D., Drysdale, W. S., Lewis, A. C., Hueglin, C., Emmenegger, L. and D. C. Carslaw, (2021). COVID-19 lockdowns highlight a risk of increasing ozone pollution in European urban areas. Atmospheric Chemistry and Physics, 21, 4169–4185, https://doi.org/10.5194/acp-21-4169-2021."
+    "section": "Example at Camden roadside site",
+    "text": "Example at Camden roadside site\n\n\n\nQuestion: What would the 2019 NO2 concentration at the Camden Roadside site be it experienced weather conditions of other years?\n\n\n\n\nBuild model for 2019 to explain NO2 concentrations using measured meteorological data\nPredict NO2 concentrations based on other meteorological years\nRank the predictions\nNO2 varies from 39 to 45 μg m-3 (2019 was 43 μg m-3)"
+  },
+  {
+    "objectID": "IAQM_2023.html#example-at-the-port-of-dover",
+    "href": "IAQM_2023.html#example-at-the-port-of-dover",
+    "title": "",
+    "section": "Example at the Port of Dover",
+    "text": "Example at the Port of Dover\n\n\n\nFuel quality changes detected in SO2 concentrations\n\n\n\n\n\nDifficult to see changes in SO2 in raw data\n\n\n\n\nDeweathered data much clearer and can be linked to known changes in fuel sulphur content"
+  },
+  {
+    "objectID": "IAQM_2023.html#further-information",
+    "href": "IAQM_2023.html#further-information",
+    "title": "",
+    "section": "Further information",
+    "text": "Further information\n\nRead more about openair in the on-line book https://bookdown.org/david_carslaw/openair/\nBrowse the source code on GitHub at https://github.com/davidcarslaw/openair\n\nPublished papers on polar plots and deweathering:\n\nGrange, Stuart K, Alastair C Lewis, and David C Carslaw. 2016.”Source Apportionment Advances Using Polar Plots of Bivariate Correlation and Regression Statistics.”Atmospheric Environment 145: 128–34.\nUria-Tellaetxe, I, and D. C. Carslaw. 2014.”Conditional Bivariate Probability Function for Source Identification.”Environmental Modelling & Software 59: 1–9. https://doi.org/10.1016/j.envsoft.2014.05.002.\nCarslaw, D. C., and S. D. Beevers. 2013. “Characterising and Understanding Emission Sources Using Bivariate Polar Plots and k-Means Clustering.”Environmental Modelling & Software 40 (0): 325–29. https://doi.org/10.1016/j.envsoft.2012.09.005.\nGrange, S. K. and Carslaw, D. C. (2019) ‘Using meteorological normalisation to detect interventions in air quality time series’, Science of The Total Environment. 653, pp. 578–588. https://doi.org/10.1016/j.scitotenv.2018.10.344.\nGrange, S. K., Lee, J. D., Drysdale, W. S., Lewis, A. C., Hueglin, C., Emmenegger, L. and D. C. Carslaw, (2021). COVID-19 lockdowns highlight a risk of increasing ozone pollution in European urban areas. Atmospheric Chemistry and Physics, 21, 4169–4185, https://doi.org/10.5194/acp-21-4169-2021."
   }
 ]
