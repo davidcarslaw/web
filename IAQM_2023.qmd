@@ -377,13 +377,11 @@ Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to d
 
 ::: columns
 ::: {.column width="45%"}
-
 -   Meteorology can mask or emphasise trends
     -   Trends often affected more by the weather than by changes in emissions
 -   Detecting change --- is it due to an intervention that affects emissions or by the weather?
-- Many sophisticated change-point methods but the elephant in the room is often meteorology
--   Extensions to `{openair}` and the `{rmweather}` package can 'deweather' time series of air quality data --- now widely used globally with the Covid-19 interest 
-
+-   Many sophisticated change-point methods but the elephant in the room is often meteorology
+-   Extensions to `{openair}` and the `{rmweather}` package can 'deweather' time series of air quality data --- now widely used globally with the Covid-19 interest
 :::
 
 ::: {.column width="10%"}
@@ -395,9 +393,7 @@ Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to d
 
 ::: {.column width="10%"}
 :::
-
 :::
-
 
 # A good vintage! {background="#43464B" background-image="images/Wine-Vintage.jpeg"}
 
@@ -406,9 +402,7 @@ Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to d
 ::: columns
 ::: {.column width="35%"}
 ::: incremental
-
 ::: {style="font-size:50px"}
-
 -   We tend to describe air quality in terms of "good" or "bad" years; like wine!
 
 -   Important to know whether things have improved (or got worse) because of the weather or emissions
@@ -422,6 +416,7 @@ Grange, S. K. and Carslaw, D. C. (2019) 'Using meteorological normalisation to d
 ## Example at Camden roadside site
 
 <hr>
+
 <br>
 
 ::: {style="font-size:60px"}
@@ -430,11 +425,10 @@ Question: What would the 2019 NO~2~ concentration at the Camden Roadside site be
 
 ::: columns
 ::: {.column width="40%"}
-
-- Build model for 2019 to explain NO~2~ concentrations using measured meteorological data
-- Predict NO~2~ concentrations based on other meteorological years
-- Rank the predictions
-- NO~2~ varies from 39 to 45 μg m^-3^ (2019 was 43 μg m^-3^)
+-   Build model for 2019 to explain NO~2~ concentrations using measured meteorological data
+-   Predict NO~2~ concentrations based on other meteorological years
+-   Rank the predictions
+-   NO~2~ varies from 39 to 45 μg m^-3^ (2019 was 43 μg m^-3^)
 :::
 
 ::: {.column width="5%"}
@@ -448,6 +442,7 @@ Question: What would the 2019 NO~2~ concentration at the Camden Roadside site be
 ## Example at the Port of Dover
 
 <hr>
+
 <br>
 
 ::: {style="font-size:60px"}
@@ -457,22 +452,20 @@ Fuel quality changes detected in SO~2~ concentrations
 <br>
 
 ::: columns
-
 ::: {.column width="50%"}
-- Difficult to see changes in SO~2~ in raw data
+-   Difficult to see changes in SO~2~ in raw data
 
 ![](images/dover_raw.png)
 :::
 
 ::: {.column width="50%"}
-
-- Deweathered data much clearer and can be linked to **known** changes in fuel sulphur content
+-   Deweathered data much clearer and can be linked to **known** changes in fuel sulphur content
 
 ![](images/dover_so2_normalised_with_ribbons.svg)
 :::
 :::
 
-#
+# 
 
 ::: {style="font-size:100px"}
 Thank you for your attention
@@ -481,7 +474,7 @@ Thank you for your attention
 <br>
 
 ::: {style="font-size:50px"}
-David Carslaw (david.carslaw@york.ac.uk, david.carslaw@ricardo.com)
+David Carslaw (david.carslaw\@york.ac.uk, david.carslaw\@ricardo.com)
 :::
 
 ## Further information {.smaller}
@@ -490,7 +483,7 @@ David Carslaw (david.carslaw@york.ac.uk, david.carslaw@ricardo.com)
 
 -   Browse the source code on GitHub at <https://github.com/davidcarslaw/openair>
 
-- This presentation <https://davidcarslaw.github.io/web/IAQM_2023.html>
+-   This presentation <https://davidcarslaw.github.io/web/IAQM_2023.html>
 
 -   Published papers on polar plots and deweathering:
 
